@@ -10,14 +10,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;family=IBM+Plex+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #d9d2c7;
-      --paper: #f2eee7;
-      --ink: #161a1f;
-      --muted: #4e5862;
-      --brand: #254f5b;
-      --brand-2: #9f6142;
-      --brand-3: #6c7f64;
-      --line: #c9c0b2;
+      --bg: #7f7b70;
+      --paper: #d8d0bf;
+      --ink: #2f3342;
+      --muted: #555e73;
+      --brand: #5f81da;
+      --brand-2: #e8c45d;
+      --brand-3: #b4a272;
+      --line: #97907f;
       --shadow: 0 18px 40px rgba(13, 16, 22, 0.14);
       --radius: 16px;
     }
@@ -31,9 +31,9 @@
       font-family: "IBM Plex Sans KR", sans-serif;
       color: var(--ink);
       background:
-        radial-gradient(circle at 82% -8%, rgba(159, 97, 66, 0.24) 0%, transparent 42%),
-        radial-gradient(circle at 8% 10%, rgba(37, 79, 91, 0.2) 0%, transparent 38%),
-        linear-gradient(180deg, rgba(37, 79, 91, 0.04) 0%, rgba(0, 0, 0, 0) 24%),
+        radial-gradient(circle at 82% -8%, rgba(232, 196, 93, 0.27) 0%, transparent 42%),
+        radial-gradient(circle at 8% 10%, rgba(95, 129, 218, 0.24) 0%, transparent 38%),
+        linear-gradient(180deg, rgba(62, 69, 89, 0.24) 0%, rgba(62, 69, 89, 0.06) 36%),
         var(--bg);
       line-height: 1.55;
     }
@@ -48,7 +48,7 @@
       top: 0;
       z-index: 20;
       backdrop-filter: blur(10px);
-      background: rgba(217, 210, 199, 0.88);
+      background: rgba(127, 123, 112, 0.88);
       border-bottom: 1px solid rgba(78, 88, 98, 0.26);
     }
 
@@ -84,7 +84,7 @@
     }
 
     nav a:hover {
-      background: rgba(31, 94, 102, 0.13);
+      background: rgba(95, 129, 218, 0.2);
     }
 
     .hero {
@@ -108,8 +108,8 @@
       margin: 0 0 10px;
       display: inline-block;
       font-size: 0.82rem;
-      background: rgba(31, 94, 102, 0.12);
-      color: #1b4f57;
+      background: rgba(95, 129, 218, 0.16);
+      color: #334f97;
       border-radius: 999px;
       padding: 6px 12px;
       font-weight: 600;
@@ -263,13 +263,13 @@
 
     .pill-links a {
       text-decoration: none;
-      border: 1px solid rgba(31, 94, 102, .3);
+      border: 1px solid rgba(95, 129, 218, .42);
       border-radius: 999px;
       padding: 7px 12px;
       color: var(--brand);
       font-weight: 600;
       font-size: .86rem;
-      background: rgba(31, 94, 102, .08);
+      background: rgba(95, 129, 218, .12);
     }
 
     .triple {
@@ -341,7 +341,7 @@
       font-size: .8rem;
       font-weight: 700;
       color: #fff;
-      background: linear-gradient(130deg, var(--brand), #2f4f82);
+      background: linear-gradient(130deg, var(--brand), #7682a3);
       border-radius: 999px;
       padding: 4px 9px;
     }
@@ -362,11 +362,11 @@
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background: linear-gradient(175deg, transparent 60%, rgba(31, 94, 102, 0.08));
+      background: linear-gradient(175deg, transparent 60%, rgba(95, 129, 218, 0.13));
     }
 
-    .track:nth-child(2)::before { background: linear-gradient(175deg, transparent 60%, rgba(184, 108, 66, 0.09)); }
-    .track:nth-child(3)::before { background: linear-gradient(175deg, transparent 60%, rgba(122, 143, 106, 0.1)); }
+    .track:nth-child(2)::before { background: linear-gradient(175deg, transparent 60%, rgba(232, 196, 93, 0.15)); }
+    .track:nth-child(3)::before { background: linear-gradient(175deg, transparent 60%, rgba(180, 162, 114, 0.14)); }
 
     .track p { margin: 0; color: var(--muted); }
 
@@ -394,7 +394,7 @@
 
     .cta {
       margin-top: 20px;
-      background: linear-gradient(120deg, var(--brand), #345c86);
+      background: linear-gradient(120deg, var(--brand), #3e4559);
       color: #f7fffd;
       border-radius: 18px;
       padding: 22px;
@@ -431,9 +431,9 @@
     .swatch strong { font-size: 1rem; }
     .swatch span { font-size: .86rem; opacity: .9; }
 
-    .swatch-60 { background: #fbf8f2; color: #1d2328; }
-    .swatch-30 { background: #1f5e66; color: #f4f8f8; }
-    .swatch-10 { background: #b86c42; color: #fff6f0; }
+    .swatch-60 { background: #b4a272; color: #2f3342; }
+    .swatch-30 { background: #7682a3; color: #f3f5fb; }
+    .swatch-10 { background: #e8c45d; color: #3e4456; }
 
     .palette-notes {
       margin-top: 12px;
@@ -548,20 +548,20 @@
       </div>
       <div class="palette-chart" aria-label="Color balance chart for refined 60-30-10 composition">
         <div class="swatch swatch-60">
-          <strong>60% Base · Ivory Mist</strong>
-          <span>#FBF8F2 · Main background and large surfaces</span>
+          <strong>60% Base · Sandstone</strong>
+          <span>#B4A272 · Main background and large surfaces</span>
         </div>
         <div class="swatch swatch-30">
-          <strong>30% Core · Deep Teal</strong>
-          <span>#1F5E66 · Brand blocks and hierarchy anchors</span>
+          <strong>30% Core · Slate Blue</strong>
+          <span>#7682A3 · Brand blocks and hierarchy anchors</span>
         </div>
         <div class="swatch swatch-10">
-          <strong>10% Accent · Copper Clay</strong>
-          <span>#B86C42 · Emphasis and action points</span>
+          <strong>10% Accent · Warm Gold</strong>
+          <span>#E8C45D · Emphasis and action points</span>
         </div>
       </div>
       <p class="palette-notes">
-        보조 톤은 Slate Ink(#1D2328), Blue Steel(#345C86), Sage Dust(#7A8F6A)로 구성해 대비와 안정감을 동시에 확보했습니다.
+        보조 톤은 Royal Blue(#5F81DA), Taupe Gray(#7F7B70), Charcoal Blue(#3E4456)로 구성해 무게감과 대비를 함께 유지했습니다.
       </p>
     </section>
 
