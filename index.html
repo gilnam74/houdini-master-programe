@@ -3,21 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Houdini Master Program – Film &amp; Game</title>
-  <meta name="description" content="Houdini Master Program: Film FX, Game FX, Procedural Tech Art for 12 months." />
+  <title>Houdini Master Program – Film &amp; Game (DOOBOB)</title>
+  <meta name="description" content="DOOBOB Houdini Master Program: Film FX, Game FX, Procedural Tech Art for 12 months." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;family=IBM+Plex+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f4efe6;
-      --paper: #fffdf8;
-      --ink: #1f1d1a;
-      --muted: #685f52;
-      --brand: #0d8a73;
-      --brand-2: #e45e2f;
-      --line: #ded6c8;
-      --shadow: 0 18px 40px rgba(28, 22, 14, 0.08);
+      --bg: #efeae1;
+      --paper: #fbf8f2;
+      --ink: #1d2328;
+      --muted: #5b6671;
+      --brand: #1f5e66;
+      --brand-2: #b86c42;
+      --brand-3: #7a8f6a;
+      --line: #d8d1c4;
+      --shadow: 0 18px 40px rgba(21, 26, 31, 0.09);
       --radius: 16px;
     }
 
@@ -30,8 +31,8 @@
       font-family: "IBM Plex Sans KR", sans-serif;
       color: var(--ink);
       background:
-        radial-gradient(circle at 85% -5%, rgba(228, 94, 47, 0.18) 0%, transparent 46%),
-        radial-gradient(circle at 10% 8%, rgba(13, 138, 115, 0.16) 0%, transparent 38%),
+        radial-gradient(circle at 85% -5%, rgba(184, 108, 66, 0.2) 0%, transparent 44%),
+        radial-gradient(circle at 10% 8%, rgba(31, 94, 102, 0.18) 0%, transparent 40%),
         var(--bg);
       line-height: 1.55;
     }
@@ -46,8 +47,8 @@
       top: 0;
       z-index: 20;
       backdrop-filter: blur(10px);
-      background: rgba(244, 239, 230, 0.82);
-      border-bottom: 1px solid rgba(104, 95, 82, 0.18);
+      background: rgba(239, 234, 225, 0.82);
+      border-bottom: 1px solid rgba(91, 102, 113, 0.22);
     }
 
     .topbar {
@@ -82,7 +83,7 @@
     }
 
     nav a:hover {
-      background: rgba(13, 138, 115, 0.12);
+      background: rgba(31, 94, 102, 0.13);
     }
 
     .hero {
@@ -106,8 +107,8 @@
       margin: 0 0 10px;
       display: inline-block;
       font-size: 0.82rem;
-      background: rgba(13, 138, 115, 0.12);
-      color: #096856;
+      background: rgba(31, 94, 102, 0.12);
+      color: #1b4f57;
       border-radius: 999px;
       padding: 6px 12px;
       font-weight: 600;
@@ -152,12 +153,10 @@
       animation-delay: .08s;
     }
 
-    .hero-media img {
+    .hero-media svg {
       width: 100%;
       height: 100%;
-      object-fit: cover;
       display: block;
-      transform: scale(1.02);
     }
 
     section { padding: 40px 0; }
@@ -195,7 +194,7 @@
       font-size: .8rem;
       font-weight: 700;
       color: #fff;
-      background: linear-gradient(130deg, var(--brand), #176fbe);
+      background: linear-gradient(130deg, var(--brand), #2f4f82);
       border-radius: 999px;
       padding: 4px 9px;
     }
@@ -216,11 +215,11 @@
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background: linear-gradient(175deg, transparent 60%, rgba(13, 138, 115, 0.08));
+      background: linear-gradient(175deg, transparent 60%, rgba(31, 94, 102, 0.08));
     }
 
-    .track:nth-child(2)::before { background: linear-gradient(175deg, transparent 60%, rgba(228, 94, 47, 0.08)); }
-    .track:nth-child(3)::before { background: linear-gradient(175deg, transparent 60%, rgba(39, 95, 180, 0.09)); }
+    .track:nth-child(2)::before { background: linear-gradient(175deg, transparent 60%, rgba(184, 108, 66, 0.09)); }
+    .track:nth-child(3)::before { background: linear-gradient(175deg, transparent 60%, rgba(122, 143, 106, 0.1)); }
 
     .track p { margin: 0; color: var(--muted); }
 
@@ -239,16 +238,15 @@
       margin-top: 16px;
     }
 
-    .banner img {
+    .banner svg {
       width: 100%;
       height: 100%;
-      object-fit: cover;
       display: block;
     }
 
     .cta {
       margin-top: 20px;
-      background: linear-gradient(120deg, #0d8a73, #1a6ca1);
+      background: linear-gradient(120deg, var(--brand), #345c86);
       color: #f7fffd;
       border-radius: 18px;
       padding: 22px;
@@ -261,6 +259,38 @@
       padding: 28px 0 46px;
       color: var(--muted);
       font-size: 0.92rem;
+    }
+
+    .palette-chart {
+      display: grid;
+      grid-template-columns: 6fr 3fr 1fr;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      margin-top: 14px;
+    }
+
+    .swatch {
+      padding: 18px;
+      min-height: 112px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      font-family: "Space Grotesk", sans-serif;
+    }
+
+    .swatch strong { font-size: 1rem; }
+    .swatch span { font-size: .86rem; opacity: .9; }
+
+    .swatch-60 { background: #fbf8f2; color: #1d2328; }
+    .swatch-30 { background: #1f5e66; color: #f4f8f8; }
+    .swatch-10 { background: #b86c42; color: #fff6f0; }
+
+    .palette-notes {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: .93rem;
     }
 
     .fade-in {
@@ -282,6 +312,7 @@
       .grid-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .grid-3 { grid-template-columns: 1fr; }
       .columns { grid-template-columns: 1fr; }
+      .palette-chart { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 640px) {
@@ -296,7 +327,7 @@
 <body>
   <header>
     <div class="container topbar">
-      <div class="brand">Houdini Master Program</div>
+      <div class="brand">DOOBOB • Houdini Master Program</div>
       <nav>
         <a href="#overview">Overview</a>
         <a href="#phases">Phases</a>
@@ -311,9 +342,9 @@
     <section class="hero" id="overview">
       <article class="hero-card">
         <span class="eyebrow">Advanced Diploma / Master Certificate</span>
-        <h1>Houdini Master Program – Film &amp; Game</h1>
+        <h1>Houdini Master Program – Film &amp; Game (DOOBOB)</h1>
         <p>
-          Think Tank형 성장 곡선에 실시간 제작 역량을 결합한 12개월 집중 과정.
+          Think Tank형 성장 곡선에 DOOBOB의 실시간 제작 역량을 결합한 12개월 집중 과정.
           Houdini 기반 Procedural FX를 Film, Game, Tech Art production으로 연결합니다.
         </p>
         <div class="hero-stats">
@@ -324,7 +355,35 @@
         </div>
       </article>
       <aside class="hero-media" aria-label="Houdini FX visual">
-        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" alt="Abstract digital visual with cinematic atmosphere" loading="lazy" />
+        <svg viewBox="0 0 900 620" role="img" aria-label="Generative geometric visual for DOOBOB program">
+          <defs>
+            <linearGradient id="heroBg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#1f5e66"/>
+              <stop offset="55%" stop-color="#355c86"/>
+              <stop offset="100%" stop-color="#b86c42"/>
+            </linearGradient>
+            <radialGradient id="heroGlowA" cx="22%" cy="20%" r="42%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity=".34"/>
+              <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="heroGlowB" cx="80%" cy="78%" r="44%">
+              <stop offset="0%" stop-color="#f5d9c8" stop-opacity=".48"/>
+              <stop offset="100%" stop-color="#f5d9c8" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <rect width="900" height="620" fill="url(#heroBg)"/>
+          <circle cx="190" cy="132" r="220" fill="url(#heroGlowA)"/>
+          <circle cx="730" cy="500" r="230" fill="url(#heroGlowB)"/>
+          <g fill="none" stroke="#f3f7f7" stroke-opacity=".64">
+            <path d="M100 450 C280 260, 450 540, 780 300" stroke-width="3"/>
+            <path d="M80 360 C230 180, 450 430, 820 180" stroke-width="2"/>
+            <path d="M130 520 C260 380, 500 650, 860 420" stroke-width="2"/>
+          </g>
+          <g fill="#f8f5ef" fill-opacity=".14">
+            <rect x="520" y="120" width="220" height="120" rx="14" transform="rotate(10 520 120)"/>
+            <rect x="160" y="220" width="260" height="140" rx="14" transform="rotate(-9 160 220)"/>
+          </g>
+        </svg>
       </aside>
     </section>
 
@@ -348,6 +407,23 @@
           <p>실무처럼 역할 분화된 팀 스프린트와 산업 멘토 크리틱으로 완성도를 높입니다.</p>
         </article>
       </div>
+      <div class="palette-chart" aria-label="Color balance chart for refined 60-30-10 composition">
+        <div class="swatch swatch-60">
+          <strong>60% Base · Ivory Mist</strong>
+          <span>#FBF8F2 · Main background and large surfaces</span>
+        </div>
+        <div class="swatch swatch-30">
+          <strong>30% Core · Deep Teal</strong>
+          <span>#1F5E66 · Brand blocks and hierarchy anchors</span>
+        </div>
+        <div class="swatch swatch-10">
+          <strong>10% Accent · Copper Clay</strong>
+          <span>#B86C42 · Emphasis and action points</span>
+        </div>
+      </div>
+      <p class="palette-notes">
+        보조 톤은 Slate Ink(#1D2328), Blue Steel(#345C86), Sage Dust(#7A8F6A)로 구성해 대비와 안정감을 동시에 확보했습니다.
+      </p>
     </section>
 
     <section id="phases">
@@ -426,12 +502,34 @@
         </article>
       </div>
       <div class="banner">
-        <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&amp;fit=crop&amp;w=1600&amp;q=80" alt="Team-based digital production workspace" loading="lazy" />
+        <svg viewBox="0 0 1400 460" role="img" aria-label="Generative workflow illustration with nodes and connections">
+          <defs>
+            <linearGradient id="bannerBg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#1d2328"/>
+              <stop offset="45%" stop-color="#1f5e66"/>
+              <stop offset="100%" stop-color="#7a8f6a"/>
+            </linearGradient>
+          </defs>
+          <rect width="1400" height="460" fill="url(#bannerBg)"/>
+          <g stroke="#f6f3ec" stroke-opacity=".45" fill="none">
+            <path d="M120 330 C360 180, 640 390, 1220 170" stroke-width="3"/>
+            <path d="M140 260 C340 120, 710 320, 1280 120" stroke-width="2"/>
+            <path d="M90 390 C370 250, 700 470, 1320 250" stroke-width="2"/>
+          </g>
+          <g>
+            <circle cx="200" cy="245" r="22" fill="#fbf8f2"/>
+            <circle cx="420" cy="170" r="18" fill="#b86c42"/>
+            <circle cx="620" cy="260" r="24" fill="#fbf8f2"/>
+            <circle cx="840" cy="155" r="16" fill="#b86c42"/>
+            <circle cx="1030" cy="250" r="21" fill="#fbf8f2"/>
+            <circle cx="1220" cy="160" r="14" fill="#b86c42"/>
+          </g>
+        </svg>
       </div>
     </section>
 
     <section id="studio">
-      <h2>Studio Production Model</h2>
+      <h2>DOOBOB Studio Production Model</h2>
       <div class="columns">
         <article class="card">
           <h3>Junior Studio Concept</h3>
@@ -442,7 +540,7 @@
           </ul>
         </article>
         <article class="card">
-          <h3>Signature Modules</h3>
+          <h3>DOOBOB Signature Modules</h3>
           <ul>
             <li>Procedural Thinking for Artists</li>
             <li>Houdini for Level Design</li>
@@ -475,7 +573,7 @@
           <h3>Admission Level</h3>
           <ul>
             <li>3D fundamentals or equivalent</li>
-            <li>또는 3D/GDD 졸업자</li>
+            <li>또는 DOOBOB 3D/GDD 졸업자</li>
             <li>또는 포트폴리오 심사</li>
           </ul>
         </article>
@@ -485,7 +583,7 @@
 
   <footer>
     <div class="container">
-      Houdini Master Program – Film &amp; Game · Advanced Diploma / Master Certificate
+      Houdini Master Program – Film &amp; Game (DOOBOB) · Advanced Diploma / Master Certificate
     </div>
   </footer>
 </body>
