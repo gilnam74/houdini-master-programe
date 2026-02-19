@@ -337,6 +337,17 @@ section { padding: 40px 0; }
 
 .cta p { margin: 8px 0 0; color: rgba(245, 255, 252, 0.9); }
 
+.instructor-headshot {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  border: 2px solid rgba(55, 61, 89, .18);
+  box-shadow: 0 6px 18px rgba(13, 16, 22, 0.12);
+  margin-bottom: 12px;
+}
+
 .source-links {
   margin-top: 14px;
   display: flex;
