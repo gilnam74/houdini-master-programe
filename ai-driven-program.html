@@ -8,7 +8,69 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;family=IBM+Plex+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root {
+      --bg: #cfd4d7;
+      --paper: #e1e4de;
+      --ink: #17212b;
+      --muted: #324251;
+      --brand: #273a49;
+      --brand-2: #aab4bf;
+      --brand-3: #f39a52;
+      --line: #9ca7b0;
+      --shadow: 0 18px 40px rgba(20, 31, 40, 0.2);
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 88% -8%, rgba(170, 180, 191, 0.35) 0%, transparent 44%),
+        radial-gradient(circle at 8% 16%, rgba(39, 58, 73, 0.18) 0%, transparent 40%),
+        linear-gradient(180deg, rgba(170, 180, 191, 0.2) 0%, rgba(207, 212, 215, 0.08) 40%),
+        var(--bg);
+    }
+
+    #vision {
+      background:
+        radial-gradient(circle at 10% 20%, rgba(170, 180, 191, 0.3), transparent 42%),
+        linear-gradient(180deg, rgba(170, 180, 191, 0.32), rgba(170, 180, 191, 0.14));
+      border-color: rgba(39, 58, 73, 0.22);
+    }
+
+    #phases {
+      background:
+        radial-gradient(circle at 86% 16%, rgba(243, 154, 82, 0.28), transparent 46%),
+        linear-gradient(180deg, rgba(170, 180, 191, 0.36), rgba(39, 58, 73, 0.08));
+      border-color: rgba(39, 58, 73, 0.26);
+    }
+
+    #tracks {
+      background:
+        radial-gradient(circle at 15% 20%, rgba(39, 58, 73, 0.2), transparent 38%),
+        linear-gradient(180deg, rgba(170, 180, 191, 0.24), rgba(39, 58, 73, 0.1));
+      border-color: rgba(39, 58, 73, 0.24);
+    }
+
+    #studio {
+      background:
+        radial-gradient(circle at 84% 24%, rgba(243, 154, 82, 0.22), transparent 44%),
+        linear-gradient(180deg, rgba(39, 58, 73, 0.18), rgba(170, 180, 191, 0.24));
+      border-color: rgba(39, 58, 73, 0.26);
+    }
+
+    #instructor,
+    #career {
+      background:
+        radial-gradient(circle at 12% 18%, rgba(170, 180, 191, 0.22), transparent 40%),
+        linear-gradient(180deg, rgba(39, 58, 73, 0.08), rgba(225, 228, 222, 0.82));
+      border-color: rgba(39, 58, 73, 0.2);
+    }
+
+    .cta {
+      background: linear-gradient(120deg, #273a49, #f39a52);
+      color: #fffaf2;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -24,7 +86,7 @@
         <a href="#studio">Studio Model</a>
         <a href="#instructor">Instructor</a>
         <a href="#career">Career</a>
-        <a href="ai-driven-program.html">AI Program</a>
+        <a href="houdini.html">Houdini Program</a>
       </nav>
       <div class="lang-switch" aria-label="Language switch">
         <a href="index-ko.html">KO</a>
@@ -52,7 +114,7 @@
           <a href="#phases">Phases</a>
           <a href="#tracks">Tracks</a>
           <a href="#career">Career</a>
-          <a href="ai-driven-program.html">AI Program</a>
+          <a href="houdini.html">Houdini Program</a>
         </div>
       </article>
       <aside class="portal-art" aria-label="Learning portal key visual">
