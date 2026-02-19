@@ -1,2 +1,2 @@
 # houdini-master-programe
-houdini master program for filme and game
+houdini master program for film and game
