@@ -145,6 +145,10 @@
       box-shadow: var(--shadow);
     }
 
+    .hero-note:empty {
+      display: none;
+    }
+
     .hero-note p {
       margin: 0;
       color: var(--muted);
@@ -157,13 +161,13 @@
       align-items: end;
       justify-content: space-between;
       gap: 18px;
-      padding: 28px 0 18px;
+      padding: 16px 0 10px;
     }
 
     .section-head h2 {
       margin: 0;
-      font-size: clamp(2.1rem, 4vw, 3.5rem);
-      line-height: 0.95;
+      font-size: clamp(1.25rem, 2.2vw, 1.8rem);
+      line-height: 1.1;
     }
 
     .section-head p {
@@ -202,17 +206,18 @@
     }
 
     .gallery-section {
-      padding-top: 18px;
+      padding-top: 8px;
       scroll-margin-top: 24px;
     }
 
     .gallery-section + .gallery-section {
-      margin-top: 26px;
+      margin-top: 10px;
     }
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      grid-template-columns: repeat(auto-fit, 210px);
+      justify-content: start;
       gap: 10px;
     }
 
@@ -402,7 +407,7 @@
       }
 
       .gallery {
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        grid-template-columns: repeat(auto-fit, 160px);
       }
 
       .art-card,
@@ -441,9 +446,7 @@
           <a href="#game-art">Game Art</a>
         </nav>
       </div>
-      <aside class="hero-note">
-        <p>Click any image to open it larger. The enlarged view can be closed by clicking the dimmed area, pressing the close button, or pressing the <kbd>Esc</kbd> key.</p>
-      </aside>
+      <aside class="hero-note"></aside>
     </section>
 
     <section aria-label="Gallery">
@@ -452,7 +455,6 @@
           <div>
             <h2 id="visual-art-title">Visual Art</h2>
           </div>
-          <p>Portrait-led and installation-oriented studies that frame the quieter, gallery-facing side of the archive.</p>
         </div>
         <div class="gallery">
           <button class="art-card wide" type="button" data-full="assets/images/mypicture_2026_v02.jpg" data-alt="Portrait of Choi Gil Nam" data-caption="Portrait study / temporary lead image for the artist page.">
@@ -487,15 +489,14 @@
           <div>
             <h2 id="film-art-title">Film Art</h2>
           </div>
-          <p>Atmospheric frames and projection-based images grouped as cinematic studies and scene-driven visual compositions.</p>
         </div>
         <div class="gallery">
-          <button class="art-card wide" type="button" data-kind="video" data-embed="https://player.vimeo.com/video/326981893?autoplay=1" data-alt="Film art Vimeo reel" data-caption="A collection of Hollywood film scenes I contributed to as a digital artist.">
+          <button class="art-card" type="button" data-kind="video" data-embed="https://player.vimeo.com/video/326981893?autoplay=1" data-alt="Film art Vimeo reel" data-caption="A collection of Hollywood film scenes I contributed to as a digital artist.">
             <img src="assets/images/gallery/FilmArt.JPG" alt="Film art Vimeo reel thumbnail" width="1280" height="720" loading="lazy" />
             <span class="card-copy"><strong>Film Art Reel</strong><span>A collection of Hollywood film scenes I contributed to as a digital artist.</span></span>
           </button>
 
-          <button class="art-card wide" type="button" data-full="assets/images/city_seoul_evening.jpg" data-alt="Seoul evening city image" data-caption="Urban atmosphere reference / temporary placeholder image.">
+          <button class="art-card" type="button" data-full="assets/images/city_seoul_evening.jpg" data-alt="Seoul evening city image" data-caption="Urban atmosphere reference / temporary placeholder image.">
             <img src="assets/images/city_seoul_evening.jpg" alt="Seoul evening city image" width="1920" height="1080" loading="lazy" />
             <span class="card-copy"><strong>Seoul Evening</strong><span>Urban atmosphere reference integrated into the visual archive.</span></span>
           </button>
@@ -517,10 +518,9 @@
           <div>
             <h2 id="game-art-title">Game Art</h2>
           </div>
-          <p>Environment-facing compositions, mood plates, and structured scene images grouped as playable-world references.</p>
         </div>
         <div class="gallery">
-          <button class="art-card wide" type="button" data-kind="video" data-embed="https://player.vimeo.com/video/784287548?autoplay=1" data-alt="Game art Vimeo reel" data-caption="Vimeo game art feature / opens the linked motion piece inside the same lightbox view.">
+          <button class="art-card" type="button" data-kind="video" data-embed="https://player.vimeo.com/video/784287548?autoplay=1" data-alt="Game art Vimeo reel" data-caption="Vimeo game art feature / opens the linked motion piece inside the same lightbox view.">
             <img src="assets/images/HoudiniVFXGameThumnail.jpg" alt="Game art Vimeo reel thumbnail" width="600" height="600" loading="lazy" />
             <span class="card-copy"><strong>Game Art Reel</strong><span>Vimeo-linked game art work presented inside the same lightbox layout.</span></span>
           </button>
@@ -530,7 +530,7 @@
             <span class="card-copy"><strong>Gallery Wall</strong><span>Muted tones, suspended forms, and surface rhythm.</span></span>
           </button>
 
-          <button class="art-card wide" type="button" data-full="assets/images/city_vancouver_night.jpg" data-alt="Vancouver night city image" data-caption="Night city archive plate / temporary placeholder image.">
+          <button class="art-card" type="button" data-full="assets/images/city_vancouver_night.jpg" data-alt="Vancouver night city image" data-caption="Night city archive plate / temporary placeholder image.">
             <img src="assets/images/city_vancouver_night.jpg" alt="Vancouver night city image" width="1920" height="1080" loading="lazy" />
             <span class="card-copy"><strong>Vancouver Night</strong><span>Final gallery image used to close the sequence with a darker note.</span></span>
           </button>

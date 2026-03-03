@@ -145,6 +145,10 @@
       box-shadow: var(--shadow);
     }
 
+    .hero-note:empty {
+      display: none;
+    }
+
     .hero-note p {
       margin: 0;
       color: var(--muted);
@@ -157,13 +161,13 @@
       align-items: end;
       justify-content: space-between;
       gap: 18px;
-      padding: 28px 0 18px;
+      padding: 16px 0 10px;
     }
 
     .section-head h2 {
       margin: 0;
-      font-size: clamp(2.1rem, 4vw, 3.5rem);
-      line-height: 0.95;
+      font-size: clamp(1.25rem, 2.2vw, 1.8rem);
+      line-height: 1.1;
     }
 
     .section-head p {
@@ -202,17 +206,18 @@
     }
 
     .gallery-section {
-      padding-top: 18px;
+      padding-top: 8px;
       scroll-margin-top: 24px;
     }
 
     .gallery-section + .gallery-section {
-      margin-top: 26px;
+      margin-top: 10px;
     }
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      grid-template-columns: repeat(auto-fit, 210px);
+      justify-content: start;
       gap: 10px;
     }
 
@@ -402,7 +407,7 @@
       }
 
       .gallery {
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        grid-template-columns: repeat(auto-fit, 160px);
       }
 
       .art-card,
@@ -441,9 +446,7 @@
           <a href="#game-art">Game Art</a>
         </nav>
       </div>
-      <aside class="hero-note">
-        <p>이미지를 클릭하면 크게 볼 수 있습니다. 어두운 배경을 누르거나 닫기 버튼, 또는 <kbd>Esc</kbd> 키로 확대 화면을 닫을 수 있습니다.</p>
-      </aside>
+      <aside class="hero-note"></aside>
     </section>
 
     <section aria-label="Gallery">
@@ -452,7 +455,6 @@
           <div>
             <h2 id="visual-art-title">Visual Art</h2>
           </div>
-          <p>포트레이트와 설치 작업 성격이 강한 이미지를 묶어, 갤러리 중심의 조용한 인상을 먼저 보여주는 섹션입니다.</p>
         </div>
         <div class="gallery">
           <button class="art-card wide" type="button" data-full="assets/images/mypicture_2026_v02.jpg" data-alt="Choi Gil Nam portrait" data-caption="포트레이트 스터디 / 아티스트 페이지의 메인 임시 이미지입니다.">
@@ -487,15 +489,14 @@
           <div>
             <h2 id="film-art-title">Film Art</h2>
           </div>
-          <p>장면성과 분위기가 강한 이미지들을 묶어, 시네마틱한 프레임과 프로젝션 기반 작업처럼 보이도록 정리했습니다.</p>
         </div>
         <div class="gallery">
-          <button class="art-card wide" type="button" data-kind="video" data-embed="https://player.vimeo.com/video/326981893?autoplay=1" data-alt="Film art Vimeo reel" data-caption="디지털 아티스트로서 참여했던 헐리우드 영화 장면들 모음">
+          <button class="art-card" type="button" data-kind="video" data-embed="https://player.vimeo.com/video/326981893?autoplay=1" data-alt="Film art Vimeo reel" data-caption="디지털 아티스트로서 참여했던 헐리우드 영화 장면들 모음">
             <img src="assets/images/gallery/FilmArt.JPG" alt="Film art Vimeo reel thumbnail" width="1280" height="720" loading="lazy" />
             <span class="card-copy"><strong>Film Art Reel</strong><span>디지털 아티스트로서 참여했던 헐리우드 영화 장면들 모음</span></span>
           </button>
 
-          <button class="art-card wide" type="button" data-full="assets/images/city_seoul_evening.jpg" data-alt="Seoul evening city image" data-caption="도시 아카이브 레퍼런스 / 임시 플레이스홀더 이미지.">
+          <button class="art-card" type="button" data-full="assets/images/city_seoul_evening.jpg" data-alt="Seoul evening city image" data-caption="도시 아카이브 레퍼런스 / 임시 플레이스홀더 이미지.">
             <img src="assets/images/city_seoul_evening.jpg" alt="Seoul evening city image" width="1920" height="1080" loading="lazy" />
             <span class="card-copy"><strong>Seoul Evening</strong><span>도시 분위기를 아카이브 레퍼런스로 끌어온 시퀀스입니다.</span></span>
           </button>
@@ -517,10 +518,9 @@
           <div>
             <h2 id="game-art-title">Game Art</h2>
           </div>
-          <p>환경 연출과 무드 플레이트 느낌이 강한 이미지를 묶어, 플레이 가능한 세계관 레퍼런스처럼 보이도록 구성했습니다.</p>
         </div>
         <div class="gallery">
-          <button class="art-card wide" type="button" data-kind="video" data-embed="https://player.vimeo.com/video/784287548?autoplay=1" data-alt="Game art Vimeo reel" data-caption="Vimeo game art feature / 같은 라이트박스 레이아웃 안에서 영상으로 열리도록 연결했습니다.">
+          <button class="art-card" type="button" data-kind="video" data-embed="https://player.vimeo.com/video/784287548?autoplay=1" data-alt="Game art Vimeo reel" data-caption="Vimeo game art feature / 같은 라이트박스 레이아웃 안에서 영상으로 열리도록 연결했습니다.">
             <img src="assets/images/HoudiniVFXGameThumnail.jpg" alt="Game art Vimeo reel thumbnail" width="600" height="600" loading="lazy" />
             <span class="card-copy"><strong>Game Art Reel</strong><span>Vimeo 링크로 연결된 게임 아트 작업을 같은 보기 방식으로 구성했습니다.</span></span>
           </button>
@@ -530,7 +530,7 @@
             <span class="card-copy"><strong>Gallery Wall</strong><span>절제된 톤과 매달린 구조, 표면 리듬을 보여줍니다.</span></span>
           </button>
 
-          <button class="art-card wide" type="button" data-full="assets/images/city_vancouver_night.jpg" data-alt="Vancouver night city image" data-caption="야간 도시 아카이브 / 임시 플레이스홀더 이미지.">
+          <button class="art-card" type="button" data-full="assets/images/city_vancouver_night.jpg" data-alt="Vancouver night city image" data-caption="야간 도시 아카이브 / 임시 플레이스홀더 이미지.">
             <img src="assets/images/city_vancouver_night.jpg" alt="Vancouver night city image" width="1920" height="1080" loading="lazy" />
             <span class="card-copy"><strong>Vancouver Night</strong><span>조금 더 어두운 톤으로 시퀀스를 마무리하는 마지막 이미지입니다.</span></span>
           </button>
