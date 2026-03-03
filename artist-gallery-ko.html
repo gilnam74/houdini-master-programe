@@ -303,6 +303,16 @@
       justify-items: center;
     }
 
+    .lightbox-media {
+      width: min(1000px, 100%);
+      display: grid;
+      place-items: center;
+    }
+
+    .lightbox-media.hidden {
+      display: none;
+    }
+
     .lightbox img {
       width: auto;
       max-width: 100%;
@@ -310,6 +320,15 @@
       object-fit: contain;
       border-radius: 16px;
       box-shadow: 0 30px 90px rgba(0, 0, 0, 0.4);
+    }
+
+    .lightbox-frame {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 0;
+      border-radius: 16px;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.4);
+      background: #000;
     }
 
     .lightbox figcaption {
@@ -478,6 +497,11 @@
           <p>장면성과 분위기가 강한 이미지들을 묶어, 시네마틱한 프레임과 프로젝션 기반 작업처럼 보이도록 정리했습니다.</p>
         </div>
         <div class="gallery">
+          <button class="art-card wide" type="button" data-kind="video" data-embed="https://player.vimeo.com/video/326981893?autoplay=1" data-alt="Film art Vimeo reel" data-caption="Vimeo film art feature / 같은 라이트박스 레이아웃 안에서 영상으로 열리도록 연결했습니다.">
+            <img src="assets/images/h21_keynote_thmb.png" alt="Film art Vimeo reel thumbnail" width="1280" height="720" loading="lazy" />
+            <span class="card-copy"><strong>Film Art Reel</strong><span>Vimeo 링크로 연결된 무빙 이미지 작업을 같은 보기 방식으로 구성했습니다.</span></span>
+          </button>
+
           <button class="art-card wide" type="button" data-full="assets/images/city_seoul_evening.jpg" data-alt="Seoul evening city image" data-caption="도시 아카이브 레퍼런스 / 임시 플레이스홀더 이미지.">
             <img src="assets/images/city_seoul_evening.jpg" alt="Seoul evening city image" width="1920" height="1080" loading="lazy" />
             <span class="card-copy"><strong>Seoul Evening</strong><span>도시 분위기를 아카이브 레퍼런스로 끌어온 시퀀스입니다.</span></span>
@@ -503,6 +527,11 @@
           <p>환경 연출과 무드 플레이트 느낌이 강한 이미지를 묶어, 플레이 가능한 세계관 레퍼런스처럼 보이도록 구성했습니다.</p>
         </div>
         <div class="gallery">
+          <button class="art-card wide" type="button" data-kind="video" data-embed="https://player.vimeo.com/video/784287548?autoplay=1" data-alt="Game art Vimeo reel" data-caption="Vimeo game art feature / 같은 라이트박스 레이아웃 안에서 영상으로 열리도록 연결했습니다.">
+            <img src="assets/images/HoudiniVFXGameThumnail.jpg" alt="Game art Vimeo reel thumbnail" width="600" height="600" loading="lazy" />
+            <span class="card-copy"><strong>Game Art Reel</strong><span>Vimeo 링크로 연결된 게임 아트 작업을 같은 보기 방식으로 구성했습니다.</span></span>
+          </button>
+
           <button class="art-card" type="button" data-full="assets/images/subpage_wall_4.jpg" data-alt="Gallery wall study" data-caption="갤러리 벽면 스터디 / 임시 플레이스홀더 이미지.">
             <img src="assets/images/subpage_wall_4.jpg" alt="Gallery wall study" width="1920" height="1080" loading="lazy" />
             <span class="card-copy"><strong>Gallery Wall</strong><span>절제된 톤과 매달린 구조, 표면 리듬을 보여줍니다.</span></span>
@@ -524,14 +553,29 @@
     <button class="lightbox-nav lightbox-next" id="lightbox-next" type="button" aria-label="다음 이미지">›</button>
     <button class="lightbox-close" id="lightbox-close" type="button" aria-label="Close image">×</button>
     <figure class="lightbox-inner">
-      <img id="lightbox-image" src="" alt="" />
+      <div class="lightbox-media" id="lightbox-image-wrap">
+        <img id="lightbox-image" src="" alt="" />
+      </div>
+      <div class="lightbox-media hidden" id="lightbox-video-wrap">
+        <iframe
+          class="lightbox-frame"
+          id="lightbox-video"
+          src=""
+          title="Embedded Vimeo video"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
       <figcaption id="lightbox-caption"></figcaption>
     </figure>
   </div>
 
   <script>
     const lightbox = document.getElementById("lightbox");
+    const lightboxImageWrap = document.getElementById("lightbox-image-wrap");
+    const lightboxVideoWrap = document.getElementById("lightbox-video-wrap");
     const lightboxImage = document.getElementById("lightbox-image");
+    const lightboxVideo = document.getElementById("lightbox-video");
     const lightboxCaption = document.getElementById("lightbox-caption");
     const closeButton = document.getElementById("lightbox-close");
     const prevButton = document.getElementById("lightbox-prev");
@@ -548,8 +592,20 @@
       }
 
       currentIndex = index;
-      lightboxImage.src = card.dataset.full;
-      lightboxImage.alt = card.dataset.alt;
+      if (card.dataset.kind === "video") {
+        lightboxImageWrap.classList.add("hidden");
+        lightboxVideoWrap.classList.remove("hidden");
+        lightboxImage.src = "";
+        lightboxImage.alt = "";
+        lightboxVideo.src = card.dataset.embed || "";
+      } else {
+        lightboxVideoWrap.classList.add("hidden");
+        lightboxImageWrap.classList.remove("hidden");
+        lightboxVideo.src = "";
+        lightboxImage.src = card.dataset.full;
+        lightboxImage.alt = card.dataset.alt;
+      }
+
       lightboxCaption.textContent = card.dataset.caption || "";
     }
 
@@ -563,8 +619,11 @@
     function closeLightbox() {
       lightbox.classList.remove("open");
       lightbox.setAttribute("aria-hidden", "true");
+      lightboxImageWrap.classList.remove("hidden");
+      lightboxVideoWrap.classList.add("hidden");
       lightboxImage.src = "";
       lightboxImage.alt = "";
+      lightboxVideo.src = "";
       lightboxCaption.textContent = "";
       currentIndex = -1;
     }
