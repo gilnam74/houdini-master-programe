@@ -469,6 +469,8 @@
     const nextButton = document.getElementById("lightbox-next");
     const artCards = Array.from(document.querySelectorAll(".art-card"));
     let currentIndex = -1;
+    let touchStartX = 0;
+    let touchStartY = 0;
 
     function renderLightbox(index) {
       const card = artCards[index];
@@ -520,6 +522,34 @@
         closeLightbox();
       }
     });
+
+    lightbox.addEventListener("touchstart", (event) => {
+      if (!lightbox.classList.contains("open") || !event.touches.length) {
+        return;
+      }
+
+      touchStartX = event.touches[0].clientX;
+      touchStartY = event.touches[0].clientY;
+    }, { passive: true });
+
+    lightbox.addEventListener("touchend", (event) => {
+      if (!lightbox.classList.contains("open") || !event.changedTouches.length) {
+        return;
+      }
+
+      const deltaX = event.changedTouches[0].clientX - touchStartX;
+      const deltaY = event.changedTouches[0].clientY - touchStartY;
+
+      if (Math.abs(deltaX) < 50 || Math.abs(deltaX) < Math.abs(deltaY)) {
+        return;
+      }
+
+      if (deltaX > 0) {
+        showAdjacent(-1);
+      } else {
+        showAdjacent(1);
+      }
+    }, { passive: true });
 
     document.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && lightbox.classList.contains("open")) {
