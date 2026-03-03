@@ -177,26 +177,27 @@
     .category-nav {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      padding: 22px 0 8px;
-    }
-
-    .category-nav a {
-      display: inline-flex;
-      align-items: center;
-      min-height: 40px;
-      padding: 8px 14px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.42);
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
+      gap: 0;
+      padding: 16px 0 0;
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--muted);
     }
 
+    .category-nav a {
+      display: inline;
+      padding: 0;
+      color: var(--muted);
+    }
+
+    .category-nav a + a::before {
+      content: "/";
+      margin: 0 0.75em 0 0.55em;
+      color: var(--muted);
+    }
+
     .category-nav a:hover {
-      background: rgba(29, 26, 22, 0.08);
       color: var(--ink);
     }
 
