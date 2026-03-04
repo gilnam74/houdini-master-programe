@@ -285,6 +285,11 @@
       object-position: center bottom;
     }
 
+    .art-card.fit-contain img {
+      object-fit: contain;
+      background: #0f0f10;
+    }
+
     .art-card:hover img,
     .art-card:focus-visible img {
       transform: scale(1.02);
@@ -651,7 +656,7 @@
             <span class="card-copy"><strong>Miracle Mile Rain Show at Las Vegas</strong><span>Miracle Mile Rain Show at Las Vegas / With Giantstep US as an Effect Supervisor.</span></span>
           </button>
 
-          <button class="art-card focus-bottom" type="button" data-full="assets/images/gallery/zombieTogeter.jpg" data-alt="Zombie Together artwork" data-caption="Zombie Together / pulled from the latest repo update and moved into the dedicated gallery folder.">
+          <button class="art-card fit-contain" type="button" data-full="assets/images/gallery/zombieTogeter.jpg" data-alt="Zombie Together artwork" data-caption="Zombie Together / pulled from the latest repo update and moved into the dedicated gallery folder.">
             <img src="assets/images/gallery/zombieTogeter.jpg" alt="Zombie Together artwork" width="1920" height="1080" loading="lazy" />
             <span class="card-copy"><strong>Zombie Together</strong><span>Newly added artwork now managed from the dedicated gallery image folder.</span></span>
           </button>
