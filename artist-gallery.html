@@ -216,7 +216,7 @@
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, 228px);
+      grid-template-columns: repeat(auto-fit, 244px);
       justify-content: start;
       gap: 10px;
     }
@@ -227,17 +227,15 @@
       padding: 0;
       border: 0;
       background: var(--panel);
-      border-radius: 18px;
+      border-radius: 0;
       overflow: hidden;
-      box-shadow: var(--shadow);
       cursor: zoom-in;
       text-align: left;
-      transition: transform 180ms ease, box-shadow 180ms ease;
+      transition: transform 180ms ease;
     }
 
     .art-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 28px 70px rgba(26, 22, 16, 0.14);
+      transform: translateY(-2px);
     }
 
     .art-card.tall {
@@ -402,7 +400,7 @@
       }
 
       .gallery {
-        grid-template-columns: repeat(auto-fit, 180px);
+        grid-template-columns: repeat(auto-fit, 192px);
       }
 
       .art-card,
