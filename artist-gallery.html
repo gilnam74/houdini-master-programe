@@ -285,18 +285,6 @@
       object-position: center bottom;
     }
 
-    .art-card.fit-contain img {
-      aspect-ratio: 16 / 9;
-      object-fit: contain;
-      object-position: center center;
-      background: #0f0f10;
-    }
-
-    .art-card.fit-contain:hover img,
-    .art-card.fit-contain:focus-visible img {
-      transform: none;
-    }
-
     .art-card:hover img,
     .art-card:focus-visible img {
       transform: scale(1.02);
@@ -577,10 +565,6 @@
         aspect-ratio: 1 / 1;
       }
 
-      .art-card.fit-contain img {
-        aspect-ratio: 16 / 9;
-      }
-
       .card-copy {
         opacity: 1;
         transform: translateY(0);
@@ -667,7 +651,7 @@
             <span class="card-copy"><strong>Miracle Mile Rain Show at Las Vegas</strong><span>This is a media art video screened at the Miracle Mile Shops in Las Vegas. It was a collaboration with Giantstep US, and as Effect Supervisor I oversaw all visual effects.</span></span>
           </button>
 
-          <button class="art-card fit-contain" type="button" data-full="assets/images/gallery/zombieTogeter.jpg" data-alt="Zombie Together artwork" data-caption="Zombie Together / pulled from the latest repo update and moved into the dedicated gallery folder.">
+          <button class="art-card focus-bottom" type="button" data-full="assets/images/gallery/zombieTogeter.jpg" data-alt="Zombie Together artwork" data-caption="Zombie Together / pulled from the latest repo update and moved into the dedicated gallery folder.">
             <img src="assets/images/gallery/zombieTogeter.jpg" alt="Zombie Together artwork" width="1920" height="1080" loading="lazy" />
             <span class="card-copy"><strong>Zombie Together</strong><span>Newly added artwork now managed from the dedicated gallery image folder.</span></span>
           </button>
