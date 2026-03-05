@@ -749,6 +749,11 @@
             <img src="assets/images/gallery/Unreal-Fest-cover.webp" alt="Unreal Fest Presentation thumbnail" width="640" height="360" loading="lazy" />
             <span class="card-copy"><strong>Unreal Fest Presentation</strong><span>Unreal Fest 발표 세션입니다.</span></span>
           </button>
+
+          <button class="art-card" type="button" data-kind="video" data-embed="https://www.youtube.com/embed/CPHRPGJRGzM?autoplay=1" data-alt="Gnomon Presentation" data-description="Open Original Resourse" data-description-link="https://youtu.be/CPHRPGJRGzM" data-caption="LA에 있는 세계적으로 가장 널리 알려진 CG학교에서 온라인 라이브 강연을 하였다.">
+            <img src="assets/images/gallery/game-art-fourth-thumbnail.png" alt="Gnomon Presentation thumbnail" width="225" height="225" loading="lazy" />
+            <span class="card-copy"><strong>Gnomon Presentation</strong><span>LA 주요 CG 학교에서 진행한 온라인 라이브 세션입니다.</span></span>
+          </button>
         </div>
       </section>
 
@@ -943,10 +948,19 @@
       lightboxVideo.src = embedUrl;
     }
 
-    function setCaptionContent(captionText) {
-      const text = captionText || "";
+    function setRichTextContent(target, text, linkUrl) {
+      if (linkUrl) {
+        const link = document.createElement("a");
+        link.href = linkUrl;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = text || linkUrl;
+        target.replaceChildren(link);
+        return;
+      }
+
       const urlRegex = /(https?:\/\/[^\s]+)/g;
-      const parts = text.split(urlRegex);
+      const parts = (text || "").split(urlRegex);
       const fragment = document.createDocumentFragment();
 
       parts.forEach((part) => {
@@ -965,7 +979,7 @@
         fragment.appendChild(document.createTextNode(part));
       });
 
-      lightboxCaption.replaceChildren(fragment);
+      target.replaceChildren(fragment);
     }
 
     function renderPlaylistDetails(playlist) {
@@ -1098,8 +1112,8 @@
         lightboxKind.textContent = "Video Series";
         renderPlaylistDetails(playlist);
       } else {
-        lightboxDescription.textContent = description;
-        setCaptionContent(card.dataset.caption || "");
+        setRichTextContent(lightboxDescription, description, card.dataset.descriptionLink || "");
+        setRichTextContent(lightboxCaption, card.dataset.caption || "");
       }
     }
 
