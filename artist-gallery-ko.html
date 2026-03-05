@@ -337,9 +337,10 @@
       position: fixed;
       inset: 0;
       display: none;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
-      padding: 16px;
+      padding: 24px 16px;
+      overflow-y: auto;
       background: rgba(8, 8, 8, 0.94);
       z-index: 100;
     }
@@ -350,7 +351,8 @@
 
     .lightbox-inner {
       width: min(96vw, 1680px);
-      height: min(94vh, 1080px);
+      min-height: min(94vh, 1080px);
+      height: auto;
       display: grid;
       grid-template-columns: minmax(0, 1fr) clamp(280px, 24vw, 380px);
       gap: 0;
@@ -422,7 +424,7 @@
       padding: 28px 24px;
       background: #161616;
       color: #f5f1e8;
-      overflow-y: auto;
+      overflow-y: visible;
     }
 
     .lightbox-panel-label {
@@ -565,7 +567,8 @@
 
       .lightbox-inner {
         width: min(96vw, 1200px);
-        height: min(92vh, 980px);
+        min-height: min(92vh, 980px);
+        height: auto;
         grid-template-columns: 1fr;
       }
 
@@ -607,12 +610,13 @@
       }
 
       .lightbox {
-        padding: 8px;
+        padding: 12px 8px;
       }
 
       .lightbox-inner {
         width: 100%;
-        height: 100%;
+        min-height: calc(100vh - 24px);
+        height: auto;
         border-radius: 12px;
       }
 
@@ -737,8 +741,8 @@
             <span class="card-copy"><strong>Game Art Reel</strong><span>Vimeo 링크로 연결된 게임 아트 작업을 같은 보기 방식으로 구성했습니다.</span></span>
           </button>
 
-          <button class="art-card" type="button" data-full="assets/images/subpage_wall_4.jpg" data-alt="Zombie Realtime FX course thumbnail" data-playlist="zombie-realtime-fx" data-caption="SideFX Zombie Realtime FX의 전체 레슨 링크와 요약이 이 상세 보기 안에 정리되어 있습니다.">
-            <img src="assets/images/subpage_wall_4.jpg" alt="Zombie Realtime FX course thumbnail" width="1920" height="1080" loading="lazy" />
+          <button class="art-card" type="button" data-full="assets/images/gallery/zombie.jpg" data-alt="Zombie Realtime FX course thumbnail" data-playlist="zombie-realtime-fx" data-caption="SideFX Zombie Realtime FX의 전체 레슨 링크와 요약이 이 상세 보기 안에 정리되어 있습니다.">
+            <img src="assets/images/gallery/zombie.jpg" alt="Zombie Realtime FX course thumbnail" width="600" height="600" loading="lazy" />
             <span class="card-copy"><strong>Zombie Realtime FX (SideFX)</strong><span>클릭하면 전체 레슨 링크와 설명을 확인할 수 있습니다.</span></span>
           </button>
 
