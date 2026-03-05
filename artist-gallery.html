@@ -128,6 +128,31 @@
       gap: 26px;
     }
 
+    .linkedin-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      flex: 0 0 auto;
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    .linkedin-link img {
+      width: 20px;
+      height: 20px;
+      display: block;
+      object-fit: contain;
+    }
+
+    .linkedin-link:hover,
+    .linkedin-link:focus-visible {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(10, 102, 194, 0.28);
+      outline: none;
+    }
+
     .hero-thumb {
       width: clamp(84px, 9vw, 124px);
       height: clamp(84px, 9vw, 124px);
@@ -665,6 +690,9 @@
         <p class="eyebrow">Artist</p>
         <div class="hero-title-row">
           <h1>Choi Gil Nam</h1>
+          <a class="linkedin-link" href="https://www.linkedin.com/in/choi-gil-nam-6a441132/" target="_blank" rel="noopener noreferrer" aria-label="Choi Gil Nam LinkedIn profile">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/250px-LinkedIn_logo_initials.png" alt="LinkedIn" width="250" height="250" loading="lazy" decoding="async" />
+          </a>
           <img class="hero-thumb" src="assets/images/gallery/mypictureThumnail.JPG" alt="Portrait of Choi Gil Nam" width="1280" height="1600" loading="eager" fetchpriority="high" decoding="async" />
         </div>
         <p>I explore the intersection of art and technology. Through emerging technologies, I examine how digital processes shape form and motion, opening new possibilities for visual expression. By reflecting on the past, I try to envision the future.</p>

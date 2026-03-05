@@ -128,6 +128,31 @@
       gap: 26px;
     }
 
+    .linkedin-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      flex: 0 0 auto;
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    .linkedin-link img {
+      width: 20px;
+      height: 20px;
+      display: block;
+      object-fit: contain;
+    }
+
+    .linkedin-link:hover,
+    .linkedin-link:focus-visible {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(10, 102, 194, 0.28);
+      outline: none;
+    }
+
     .hero-thumb {
       width: clamp(84px, 9vw, 124px);
       height: clamp(84px, 9vw, 124px);
@@ -665,6 +690,9 @@
         <p class="eyebrow">Artist</p>
         <div class="hero-title-row">
           <h1>Choi Gil Nam</h1>
+          <a class="linkedin-link" href="https://www.linkedin.com/in/choi-gil-nam-6a441132/" target="_blank" rel="noopener noreferrer" aria-label="Choi Gil Nam LinkedIn profile">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/250px-LinkedIn_logo_initials.png" alt="LinkedIn" width="250" height="250" loading="lazy" decoding="async" />
+          </a>
           <img class="hero-thumb" src="assets/images/gallery/mypictureThumnail.JPG" alt="Choi Gil Nam portrait" width="1280" height="1600" loading="eager" fetchpriority="high" decoding="async" />
         </div>
         <p>저는 예술과 기술의 교차점을 탐구합니다. 새로운 기술을 통해 디지털 프로세스가 형태와 움직임을 어떻게 만들어내는지 살피며, 시각적 표현의 새로운 가능성을 모색합니다. 과거를 돌아보며 미래를 그려보고자 합니다.</p>
