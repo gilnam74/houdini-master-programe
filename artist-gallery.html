@@ -337,10 +337,9 @@
       position: fixed;
       inset: 0;
       display: none;
-      align-items: flex-start;
+      align-items: center;
       justify-content: center;
-      padding: 24px 16px;
-      overflow-y: auto;
+      padding: 16px;
       background: rgba(8, 8, 8, 0.94);
       z-index: 100;
     }
@@ -351,8 +350,7 @@
 
     .lightbox-inner {
       width: min(96vw, 1680px);
-      min-height: min(94vh, 1080px);
-      height: auto;
+      height: min(94vh, 1080px);
       display: grid;
       grid-template-columns: minmax(0, 1fr) clamp(280px, 24vw, 380px);
       gap: 0;
@@ -424,7 +422,8 @@
       padding: 28px 24px;
       background: #161616;
       color: #f5f1e8;
-      overflow-y: visible;
+      overflow-y: auto;
+      overflow-x: hidden;
     }
 
     .lightbox-panel-label {
@@ -457,6 +456,8 @@
       color: #f6c37b;
       text-decoration: underline;
       text-underline-offset: 2px;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
 
     .lightbox-description a:hover,
@@ -567,8 +568,7 @@
 
       .lightbox-inner {
         width: min(96vw, 1200px);
-        min-height: min(92vh, 980px);
-        height: auto;
+        height: min(92vh, 980px);
         grid-template-columns: 1fr;
       }
 
@@ -610,13 +610,12 @@
       }
 
       .lightbox {
-        padding: 12px 8px;
+        padding: 8px;
       }
 
       .lightbox-inner {
         width: 100%;
-        min-height: calc(100vh - 24px);
-        height: auto;
+        height: 100%;
         border-radius: 12px;
       }
 
