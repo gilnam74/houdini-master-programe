@@ -8,26 +8,47 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;family=IBM+Plex+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&amp;display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="subpage-shared.css" />
+  <style>
+    :root {
+      --overlay: rgba(9, 16, 22, 0.72);
+      --text: #e7edf2;
+      --back-color: #f2b36c;
+      --meta: #f1c18b;
+      --brand-sub: #b9ccda;
+    }
+    .wrap { padding-bottom: 4px; }
+    main.container { margin-top: 8px; }
+  </style>
+  <script src="assets/js/brand-neon.js" defer></script>
 </head>
 <body>
-  <header>
-    <div class="container topbar">
-      <div class="brand">
-        <img src="assets/images/Doobob-Games-LogoHomePage.png" alt="DOOBOB logo" width="400" height="400" />
-        DOOBOB • Houdini Master Program
+  <div class="wrap">
+    <div class="top">
+      <a class="home-link" href="index.html" aria-label="Back to Programs">
+        <div class="site-brand">
+          <img src="assets/images/Doobob-Games-LogoHomePage.png" alt="DOOBOB logo" width="400" height="400" />
+          <div>
+            <h1 data-neon>DOOBOB</h1>
+            <p>Visual Effect | Game | Commercial | Tech Art</p>
+          </div>
+        </div>
+      </a>
+      <div class="top-right">
+        <div class="weather-panel">
+          <select id="city-select" class="weather-city" aria-label="Select city weather">
+            <option value="vancouver" selected>Vancouver</option>
+            <option value="seoul">Seoul</option>
+            <option value="los_angeles">Los Angeles</option>
+            <option value="london">London</option>
+          </select>
+          <div class="weather-chip" id="weather-chip"><strong>Vancouver</strong> Weather loading...</div>
+        </div>
       </div>
-      <nav aria-label="Program sections">
-        <a href="#overview">Overview</a>
-        <a href="#phases">Phases</a>
-        <a href="#tracks">Tracks</a>
-        <a href="#studio">Studio Model</a>
-        <a href="#instructor">Instructor</a>
-        <a href="#career">Career</a>
-        <a href="https://doobob.net">Program Hub</a>
-      </nav>
     </div>
-  </header>
+  </div>
 
   <main class="container">
     <section class="portal-hero" id="overview">
@@ -278,5 +299,7 @@
       Houdini Master Program – Film &amp; Game (DOOBOB) · Advanced Diploma / Master Certificate
     </div>
   </footer>
+  <div class="weather-fx" id="weather-fx" aria-hidden="true"></div>
+  <script src="assets/js/city-weather-wallpaper.js" defer></script>
 </body>
 </html>
