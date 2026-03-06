@@ -317,8 +317,3 @@ document.addEventListener("keydown", (event) => {
 });
 
 window.addEventListener("resize", applyImageFitMode);
-
-const firstVideoIndex = artCards.findIndex(card => card.dataset.kind === "video" || card.dataset.playlist);
-if (firstVideoIndex !== -1) {
-  openLightbox(firstVideoIndex);
-}
