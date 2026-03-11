@@ -64,23 +64,34 @@
     }
     main.container {
       margin-top: 2px;
-      color: #1d2738;
+      color: #c4eeda;
     }
     main.container section {
-      box-shadow: 0 14px 30px rgba(6, 18, 14, 0.12);
-      padding-top: 24px;
-      padding-bottom: 24px;
+      box-shadow: 0 14px 30px rgba(2, 8, 6, 0.32);
+      padding-top: 28px;
+      padding-bottom: 28px;
       padding-left: clamp(20px, 4vw, 60px);
       padding-right: clamp(20px, 4vw, 60px);
+      border-radius: 20px;
+      margin-bottom: 12px;
     }
     main.container section#overview {
       padding-left: 0;
       padding-right: 0;
+      box-shadow: none;
+      margin-bottom: 0;
+      border-radius: 0;
     }
-    main.container h1,
-    main.container h2,
+    main.container h2 {
+      color: #d8f5e8;
+      font-size: clamp(1.3rem, 2.8vw, 1.85rem);
+      margin-bottom: 10px;
+    }
     main.container h3 {
-      color: #0e2a20;
+      color: #c4eeda;
+    }
+    .kicker {
+      color: #5ecba1;
     }
     .portal-copy p,
     .section-intro,
@@ -88,17 +99,24 @@
     .track p,
     .card li,
     .feature-card p {
-      color: #a8dfc8;
-      line-height: 1.58;
+      color: #9dd9bf;
+      line-height: 1.65;
     }
     .portal-copy p { margin-top: 10px; }
-    .section-intro { margin-bottom: 12px; color: #2e5444; }
+    .section-intro {
+      margin-bottom: 16px;
+      color: #9dd9bf;
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 72ch;
+    }
     .phase-content ul,
     .card ul,
     .feature-card ul { margin-top: 8px; }
     .phase-content li,
-    .card li { margin-bottom: 2px; }
-    ul { color: #a8dfc8; }
+    .card li { margin-bottom: 4px; }
+    ul { color: #9dd9bf; }
+    li { line-height: 1.65; }
     .phase-label,
     .cta,
     .cta h3,
@@ -109,59 +127,63 @@
     .feature-card,
     .card,
     .phase-content {
-      background-color: rgba(14, 34, 28, 0.95);
-      border: 1px solid rgba(94, 203, 161, 0.18);
+      background-color: rgba(10, 28, 22, 0.92);
+      border: 1px solid rgba(94, 203, 161, 0.22);
     }
     .feature-card h3,
     .card h3 {
-      color: #5ecba1;
+      color: #6dd9ac;
+      font-size: 1.05rem;
+      margin-bottom: 8px;
     }
     .feature-card p,
     .track p {
-      color: #8ed4b8;
+      color: #9dd9bf;
     }
     .feature-link {
       color: #5ecba1 !important;
+      font-weight: 600;
     }
     .phase-row {
-      background: rgba(10, 26, 22, 0.97);
-      border-left: 3px solid rgba(94, 203, 161, 0.4);
+      background: rgba(8, 24, 19, 0.96);
+      border-left: 3px solid rgba(94, 203, 161, 0.5);
     }
     .phase-content h3 {
       color: #7ee8bc;
+      font-size: 1.05rem;
     }
     .phase-content p {
-      color: #8ed4b8;
+      color: #9dd9bf;
     }
     #vision {
       background:
-        radial-gradient(circle at 12% 18%, rgba(80, 170, 130, 0.12), transparent 42%),
-        linear-gradient(180deg, rgba(240, 252, 246, 0.96), rgba(232, 248, 240, 0.96));
+        radial-gradient(circle at 12% 18%, rgba(80, 170, 130, 0.18), transparent 48%),
+        linear-gradient(180deg, rgba(6, 20, 15, 0.97), rgba(8, 24, 18, 0.98));
     }
     #phases {
       background:
-        radial-gradient(circle at 84% 14%, rgba(50, 160, 110, 0.14), transparent 46%),
-        linear-gradient(180deg, rgba(232, 250, 242, 0.98), rgba(224, 244, 235, 0.98));
+        radial-gradient(circle at 84% 14%, rgba(50, 160, 110, 0.2), transparent 50%),
+        linear-gradient(180deg, rgba(7, 22, 16, 0.98), rgba(6, 20, 15, 0.97));
     }
     #modules {
       background:
-        radial-gradient(circle at 14% 18%, rgba(60, 140, 100, 0.12), transparent 40%),
-        linear-gradient(180deg, rgba(236, 248, 242, 0.98), rgba(228, 242, 236, 0.98));
+        radial-gradient(circle at 14% 18%, rgba(60, 150, 105, 0.18), transparent 46%),
+        linear-gradient(180deg, rgba(6, 20, 15, 0.98), rgba(7, 22, 16, 0.98));
     }
     #studio {
       background:
-        radial-gradient(circle at 84% 24%, rgba(70, 160, 110, 0.12), transparent 44%),
-        linear-gradient(180deg, rgba(238, 250, 238, 0.98), rgba(230, 244, 232, 0.98));
+        radial-gradient(circle at 84% 24%, rgba(70, 165, 115, 0.2), transparent 48%),
+        linear-gradient(180deg, rgba(7, 22, 16, 0.98), rgba(6, 20, 15, 0.97));
     }
     #instructor {
       background:
-        radial-gradient(circle at 12% 18%, rgba(100, 160, 130, 0.1), transparent 42%),
-        linear-gradient(180deg, rgba(240, 248, 244, 0.98), rgba(234, 244, 240, 0.98));
+        radial-gradient(circle at 12% 18%, rgba(90, 160, 125, 0.18), transparent 46%),
+        linear-gradient(180deg, rgba(6, 20, 15, 0.97), rgba(7, 22, 16, 0.98));
     }
     #career {
       background:
-        radial-gradient(circle at 86% 18%, rgba(80, 150, 100, 0.12), transparent 44%),
-        linear-gradient(180deg, rgba(242, 250, 244, 0.98), rgba(236, 244, 238, 0.98));
+        radial-gradient(circle at 86% 18%, rgba(75, 155, 105, 0.2), transparent 48%),
+        linear-gradient(180deg, rgba(7, 22, 16, 0.98), rgba(6, 20, 15, 0.97));
     }
   </style>
   <script src="assets/js/brand-neon.js" defer></script>
