@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artist Wee</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0a0a0a;
+      --fg: #f0ece4;
+      --accent: #d4ff00;
+      --muted: #555;
+      --border: rgba(240,236,228,0.1);
+      --serif: 'DM Serif Display', serif;
+      --sans: 'Space Grotesk', sans-serif;
+      --display: 'Bebas Neue', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── CURSOR ── */
+    .cursor {
+      width: 10px; height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s, width 0.3s, height 0.3s;
+      mix-blend-mode: difference;
+    }
+    .cursor-ring {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(212,255,0,0.5);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: all 0.15s ease-out;
+      mix-blend-mode: difference;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 48px;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    nav.scrolled {
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      border-color: var(--border);
+    }
+    .nav-logo {
+      font-family: var(--display);
+      font-size: 22px;
+      letter-spacing: 0.15em;
+      color: var(--fg);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--fg); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 48px 64px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--display);
+      font-size: clamp(140px, 22vw, 320px);
+      letter-spacing: -0.02em;
+      color: rgba(240,236,228,0.03);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      line-height: 1;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+    }
+    .hero-title {
+      font-family: var(--display);
+      font-size: clamp(72px, 13vw, 180px);
+      line-height: 0.92;
+      letter-spacing: -0.01em;
+      margin-bottom: 40px;
+    }
+    .hero-title .italic {
+      font-family: var(--serif);
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+    }
+    .hero-desc {
+      max-width: 380px;
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(240,236,228,0.55);
+      line-height: 1.8;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--bg);
+      background: var(--accent);
+      padding: 18px 36px;
+      text-decoration: none;
+      transition: transform 0.25s, box-shadow 0.25s;
+      white-space: nowrap;
+    }
+    .hero-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(212,255,0,0.3);
+    }
+    .hero-cta .arrow { font-size: 18px; transition: transform 0.2s; }
+    .hero-cta:hover .arrow { transform: translateX(4px); }
+
+    /* ── MARQUEE ── */
+    .marquee-wrap {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 0;
+      animation: marquee 20s linear infinite;
+      width: max-content;
+    }
+    .marquee-track span {
+      font-family: var(--display);
+      font-size: 14px;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      padding: 0 40px;
+    }
+    .marquee-track span.dot { color: var(--accent); padding: 0; }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── SECTION COMMONS ── */
+    section { padding: 120px 48px; }
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: var(--display);
+      font-size: clamp(40px, 6vw, 80px);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .section-title .serif {
+      font-family: var(--serif);
+      font-style: italic;
+    }
+
+    /* ── WORK GRID ── */
+    #work { background: #0a0a0a; }
+    .work-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 64px;
+    }
+    .work-count {
+      font-size: 72px;
+      font-family: var(--display);
+      color: var(--border);
+      line-height: 1;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+    }
+    .grid-item {
+      background: #111;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+    .grid-item:nth-child(1) { grid-column: span 7; }
+    .grid-item:nth-child(2) { grid-column: span 5; }
+    .grid-item:nth-child(3) { grid-column: span 4; }
+    .grid-item:nth-child(4) { grid-column: span 8; }
+    .grid-item:nth-child(5) { grid-column: span 6; }
+    .grid-item:nth-child(6) { grid-column: span 6; }
+
+    .grid-thumb {
+      width: 100%;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      position: relative;
+    }
+    .grid-thumb-inner {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--display);
+      font-size: clamp(40px, 8vw, 100px);
+      letter-spacing: -0.02em;
+    }
+    .grid-item:hover .grid-thumb-inner { transform: scale(1.04); }
+    /* Unique visual for each card */
+    .t1 { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: var(--accent); }
+    .t2 { background: linear-gradient(135deg, #1e0a00 0%, #3d1a00 100%); color: #ff6b35; }
+    .t3 { background: linear-gradient(135deg, #001a0f 0%, #003320 100%); color: #00ff88; }
+    .t4 { background: linear-gradient(160deg, #0d0d0d 0%, #1a0028 60%, #2d0047 100%); color: #c77dff; }
+    .t5 { background: linear-gradient(135deg, #1a1500 0%, #332b00 100%); color: var(--accent); }
+    .t6 { background: linear-gradient(135deg, #001a1a 0%, #003333 100%); color: #00d4ff; }
+
+    .grid-info {
+      padding: 20px 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .grid-info h3 {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+    .grid-info span {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .grid-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(212,255,0,0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .grid-overlay span {
+      font-family: var(--display);
+      font-size: 18px;
+      letter-spacing: 0.2em;
+      color: var(--bg);
+    }
+    .grid-item:hover .grid-overlay { opacity: 1; }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--fg);
+      color: var(--bg);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-left .section-label { color: #555; }
+    .about-left .section-title { color: var(--bg); }
+    .about-left .section-title .serif { color: #555; }
+    .about-text {
+      margin-top: 32px;
+      font-size: 16px;
+      font-weight: 300;
+      color: #444;
+      line-height: 1.9;
+    }
+    .about-text strong { font-weight: 600; color: var(--bg); }
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 56px;
+    }
+    .stat-num {
+      font-family: var(--display);
+      font-size: 56px;
+      line-height: 1;
+      color: var(--bg);
+    }
+    .stat-num span { color: #999; font-size: 32px; }
+    .stat-label {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #888;
+      margin-top: 8px;
+    }
+    .about-right {
+      position: relative;
+    }
+    .about-portrait {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: #1a1a1a;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .portrait-letter {
+      font-family: var(--display);
+      font-size: 280px;
+      color: rgba(212,255,0,0.12);
+      line-height: 1;
+      position: absolute;
+    }
+    .portrait-tag {
+      position: absolute;
+      bottom: 32px;
+      left: 32px;
+      background: var(--accent);
+      padding: 10px 20px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--bg);
+    }
+    .portrait-initials {
+      font-family: var(--display);
+      font-size: 120px;
+      color: rgba(255,255,255,0.15);
+      letter-spacing: -0.04em;
+      z-index: 1;
+    }
+
+    /* ── SERVICES ── */
+    #services { background: #0a0a0a; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      margin-top: 64px;
+    }
+    .service-item {
+      background: var(--bg);
+      padding: 48px 40px;
+      transition: background 0.3s;
+    }
+    .service-item:hover { background: #111; }
+    .service-num {
+      font-family: var(--display);
+      font-size: 48px;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+    .service-name {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      letter-spacing: 0.02em;
+    }
+    .service-desc {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 28px;
+    }
+    .service-tags span {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+    }
+
+    /* ── PROCESS ── */
+    #process { background: #0d0d0d; }
+    .process-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-bottom: 80px;
+      align-items: end;
+    }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+    }
+    .process-step {
+      background: #0d0d0d;
+      padding: 48px 32px;
+      border-top: 3px solid transparent;
+      transition: border-color 0.3s;
+    }
+    .process-step:hover { border-color: var(--accent); }
+    .step-num {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .step-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .step-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--accent);
+      color: var(--bg);
+      text-align: center;
+      padding: 160px 48px;
+    }
+    #contact .section-label { color: rgba(0,0,0,0.5); }
+    .contact-title {
+      font-family: var(--display);
+      font-size: clamp(60px, 11vw, 140px);
+      line-height: 0.9;
+      letter-spacing: -0.02em;
+      margin: 24px 0 48px;
+    }
+    .contact-title .serif {
+      font-family: var(--serif);
+      font-style: italic;
+      color: rgba(0,0,0,0.4);
+    }
+    .contact-email {
+      font-size: clamp(16px, 2.5vw, 24px);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--bg);
+      text-decoration: none;
+      border-bottom: 2px solid rgba(0,0,0,0.3);
+      padding-bottom: 4px;
+      transition: border-color 0.2s;
+      display: inline-block;
+    }
+    .contact-email:hover { border-color: var(--bg); }
+    .contact-socials {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 56px;
+    }
+    .contact-socials a {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-socials a:hover { color: var(--bg); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg);
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border);
+    }
+    .footer-logo {
+      font-family: var(--display);
+      font-size: 18px;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+    }
+    .footer-copy {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+    .footer-back {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid var(--muted);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .footer-back:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* ── REVEAL ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      nav { padding: 24px 24px; }
+      section { padding: 80px 24px; }
+      #hero { padding: 0 24px 48px; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .process-header { grid-template-columns: 1fr; gap: 24px; }
+      footer { flex-direction: column; gap: 16px; text-align: center; }
+      .hero-bottom { flex-direction: column; align-items: flex-start; }
+      .grid-item:nth-child(n) { grid-column: span 12; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 640px) {
+      .process-steps { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#" class="nav-logo">ARTIST <span>WEE</span></a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg-text">WEE</div>
+
+    <div class="hero-eyebrow reveal">Graphic Designer &amp; Visual Artist</div>
+
+    <h1 class="hero-title reveal reveal-delay-1">
+      CRAFT<br/>
+      <span class="italic">that</span><br/>
+      SPEAKS
+    </h1>
+
+    <div class="hero-bottom">
+      <p class="hero-desc reveal reveal-delay-2">
+        Visual storyteller based in Seoul — creating brand identities,
+        editorial design, and digital experiences that leave a mark.
+      </p>
+      <a href="#work" class="hero-cta reveal reveal-delay-3">
+        View Selected Work
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track" id="marquee">
+      <span>Branding</span><span class="dot">·</span>
+      <span>Typography</span><span class="dot">·</span>
+      <span>Editorial</span><span class="dot">·</span>
+      <span>Motion</span><span class="dot">·</span>
+      <span>Art Direction</span><span class="dot">·</span>
+      <span>Identity Design</span><span class="dot">·</span>
+      <span>Visual Systems</span><span class="dot">·</span>
+      <span>Packaging</span><span class="dot">·</span>
+      <span>Branding</span><span class="dot">·</span>
+      <span>Typography</span><span class="dot">·</span>
+      <span>Editorial</span><span class="dot">·</span>
+      <span>Motion</span><span class="dot">·</span>
+      <span>Art Direction</span><span class="dot">·</span>
+      <span>Identity Design</span><span class="dot">·</span>
+      <span>Visual Systems</span><span class="dot">·</span>
+      <span>Packaging</span><span class="dot">·</span>
+    </div>
+  </div>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="work-header">
+      <div>
+        <div class="section-label">Selected Projects</div>
+        <h2 class="section-title">RECENT <span class="serif">work</span></h2>
+      </div>
+      <div class="work-count reveal">06</div>
+    </div>
+
+    <div class="grid">
+      <div class="grid-item reveal">
+        <div class="grid-thumb">
+          <div class="grid-thumb-inner t1">NOVA</div>
+          <div class="grid-overlay"><span>VIEW PROJECT →</span></div>
+        </div>
+        <div class="grid-info">
+          <h3>Nova Brand Identity</h3>
+          <span>Branding · 2024</span>
+        </div>
+      </div>
+
+      <div class="grid-item reveal reveal-delay-1">
+        <div class="grid-thumb">
+          <div class="grid-thumb-inner t2">TYPE</div>
+          <div class="grid-overlay"><span>VIEW PROJECT →</span></div>
+        </div>
+        <div class="grid-info">
+          <h3>Typographic Poster Series</h3>
+          <span>Print · 2024</span>
+        </div>
+      </div>
+
+      <div class="grid-item reveal">
+        <div class="grid-thumb">
+          <div class="grid-thumb-inner t3">ECO</div>
+          <div class="grid-overlay"><span>VIEW PROJECT →</span></div>
+        </div>
+        <div class="grid-info">
+          <h3>Eco Packaging System</h3>
+          <span>Packaging · 2023</span>
+        </div>
+      </div>
+
+      <div class="grid-item reveal reveal-delay-1">
+        <div class="grid-thumb">
+          <div class="grid-thumb-inner t4">VOID</div>
+          <div class="grid-overlay"><span>VIEW PROJECT →</span></div>
+        </div>
+        <div class="grid-info">
+          <h3>Void — Exhibition Identity</h3>
+          <span>Art Direction · 2023</span>
+        </div>
+      </div>
+
+      <div class="grid-item reveal">
+        <div class="grid-thumb">
+          <div class="grid-thumb-inner t5">FLUX</div>
+          <div class="grid-overlay"><span>VIEW PROJECT →</span></div>
+        </div>
+        <div class="grid-info">
+          <h3>Flux Editorial Magazine</h3>
+          <span>Editorial · 2023</span>
+        </div>
+      </div>
+
+      <div class="grid-item reveal reveal-delay-1">
+        <div class="grid-thumb">
+          <div class="grid-thumb-inner t6">PULSE</div>
+          <div class="grid-overlay"><span>VIEW PROJECT →</span></div>
+        </div>
+        <div class="grid-info">
+          <h3>Pulse Digital Campaign</h3>
+          <span>Digital · 2022</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-left">
+        <div class="section-label">About</div>
+        <h2 class="section-title reveal">THE MIND<br/><span class="serif">behind it</span></h2>
+        <p class="about-text reveal reveal-delay-1">
+          I'm <strong>Wee</strong>, a Seoul-based graphic designer with a passion for
+          <strong>typographic systems</strong> and <strong>bold visual identities</strong>.
+          I believe great design doesn't just communicate — it provokes, disrupts,
+          and leaves a lasting impression.
+        </p>
+        <p class="about-text reveal reveal-delay-2">
+          With roots in fine art and digital media, I approach each project as
+          a unique conversation between form, function, and culture. Every pixel is intentional.
+        </p>
+        <div class="about-stats reveal reveal-delay-3">
+          <div>
+            <div class="stat-num">8<span>+</span></div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div>
+            <div class="stat-num">120<span>+</span></div>
+            <div class="stat-label">Projects Delivered</div>
+          </div>
+          <div>
+            <div class="stat-num">40<span>+</span></div>
+            <div class="stat-label">Global Clients</div>
+          </div>
+          <div>
+            <div class="stat-num">12<span>+</span></div>
+            <div class="stat-label">Design Awards</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-right reveal reveal-delay-2">
+        <div class="about-portrait">
+          <div class="portrait-letter">W</div>
+          <div class="portrait-initials">WEE</div>
+          <div class="portrait-tag">Artist Wee — Seoul, KR</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-label">What I Do</div>
+    <h2 class="section-title reveal">AREAS OF<br/><span class="serif">expertise</span></h2>
+
+    <div class="services-grid">
+      <div class="service-item reveal">
+        <div class="service-num">01</div>
+        <div class="service-name">Brand Identity</div>
+        <div class="service-desc">
+          Comprehensive visual identity systems built to scale — from logo design
+          to brand guidelines and full collateral suites.
+        </div>
+        <div class="service-tags">
+          <span>Logo</span>
+          <span>Guidelines</span>
+          <span>Collateral</span>
+        </div>
+      </div>
+
+      <div class="service-item reveal reveal-delay-1">
+        <div class="service-num">02</div>
+        <div class="service-name">Typography &amp; Print</div>
+        <div class="service-desc">
+          Editorial layouts, poster design, and type-driven compositions that
+          balance beauty with legibility and purpose.
+        </div>
+        <div class="service-tags">
+          <span>Editorial</span>
+          <span>Posters</span>
+          <span>Print</span>
+        </div>
+      </div>
+
+      <div class="service-item reveal reveal-delay-2">
+        <div class="service-num">03</div>
+        <div class="service-name">Art Direction</div>
+        <div class="service-desc">
+          Creative oversight for campaigns, exhibitions, and publications —
+          ensuring visual coherence from concept to execution.
+        </div>
+        <div class="service-tags">
+          <span>Campaigns</span>
+          <span>Exhibitions</span>
+          <span>Creative Lead</span>
+        </div>
+      </div>
+
+      <div class="service-item reveal">
+        <div class="service-num">04</div>
+        <div class="service-name">Digital Design</div>
+        <div class="service-desc">
+          UI/UX design and digital experiences that translate brand language
+          into intuitive, engaging digital touchpoints.
+        </div>
+        <div class="service-tags">
+          <span>UI / UX</span>
+          <span>Web</span>
+          <span>Motion</span>
+        </div>
+      </div>
+
+      <div class="service-item reveal reveal-delay-1">
+        <div class="service-num">05</div>
+        <div class="service-name">Packaging Design</div>
+        <div class="service-desc">
+          Product packaging that communicates brand story at first touch —
+          structural concepts through final print-ready artwork.
+        </div>
+        <div class="service-tags">
+          <span>Structural</span>
+          <span>Dieline</span>
+          <span>Retail</span>
+        </div>
+      </div>
+
+      <div class="service-item reveal reveal-delay-2">
+        <div class="service-num">06</div>
+        <div class="service-name">Motion &amp; Animation</div>
+        <div class="service-desc">
+          Kinetic typography, animated brand assets, and motion graphics
+          that bring static identities to life across digital channels.
+        </div>
+        <div class="service-tags">
+          <span>After Effects</span>
+          <span>Kinetic Type</span>
+          <span>Social</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="process-header">
+      <div>
+        <div class="section-label">How I Work</div>
+        <h2 class="section-title reveal">MY<br/><span class="serif">process</span></h2>
+      </div>
+      <p class="reveal" style="font-size:15px;color:var(--muted);line-height:1.9;max-width:400px;">
+        Every project follows a considered, collaborative process — from discovery
+        through delivery — designed to bring clarity and precision at every stage.
+      </p>
+    </div>
+
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-num">01 / DISCOVER</div>
+        <div class="step-title">Brief &amp; Research</div>
+        <div class="step-desc">Deep dive into your brand, audience, and competitive landscape to uncover meaningful insights.</div>
+      </div>
+      <div class="process-step reveal reveal-delay-1">
+        <div class="step-num">02 / DEFINE</div>
+        <div class="step-title">Strategy &amp; Concept</div>
+        <div class="step-desc">Translating insights into a clear creative direction, visual language, and conceptual framework.</div>
+      </div>
+      <div class="process-step reveal reveal-delay-2">
+        <div class="step-num">03 / DESIGN</div>
+        <div class="step-title">Craft &amp; Iterate</div>
+        <div class="step-desc">Rigorous design exploration and refinement — from rough sketches to polished executions.</div>
+      </div>
+      <div class="process-step reveal reveal-delay-3">
+        <div class="step-num">04 / DELIVER</div>
+        <div class="step-title">Launch &amp; Support</div>
+        <div class="step-desc">Final production files, guidelines, and ongoing support to ensure flawless implementation.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-label">Get In Touch</div>
+    <h1 class="contact-title">
+      LET'S<br/>
+      <span class="serif">create</span><br/>
+      TOGETHER
+    </h1>
+    <a href="mailto:hello@artistwee.com" class="contact-email">hello@artistwee.com</a>
+    <div class="contact-socials">
+      <a href="#">Instagram</a>
+      <a href="#">Behance</a>
+      <a href="#">Dribbble</a>
+      <a href="#">LinkedIn</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">ARTIST WEE</div>
+    <div class="footer-copy">© 2026 Artist Wee. All rights reserved.</div>
+    <a href="#hero" class="footer-back">Back to Top ↑</a>
+  </footer>
+
+  <script>
+    // Custom cursor
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursor-ring');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cursor.style.left = mx + 'px';
+      cursor.style.top = my + 'px';
+    });
+    function animateRing() {
+      rx += (mx - rx) * 0.15;
+      ry += (my - ry) * 0.15;
+      ring.style.left = rx + 'px';
+      ring.style.top = ry + 'px';
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
