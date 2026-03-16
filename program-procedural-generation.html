@@ -611,6 +611,28 @@
 
     .phase-content li { margin-bottom: 4px; }
 
+    .phase-row--wide-label {
+      grid-template-columns: 200px 1fr;
+    }
+
+    .phase-label--bg-img {
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .phase-label--bg-img::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+    }
+
+    .phase-label--bg-img .phase-chip {
+      position: relative;
+      z-index: 1;
+    }
+
     /* ─── Modules / Tracks ───────────────────────────────────────── */
     #modules {
       background: var(--apple-light);
@@ -887,13 +909,6 @@
           <div class="stat"><strong>Outcome</strong>Procedural Toolset + Portfolio</div>
         </div>
 
-        <!-- Pill links -->
-        <div class="pill-links">
-          <a href="#phases">Curriculum</a>
-          <a href="#modules">Modules</a>
-          <a href="#career">Career</a>
-          <a href="https://doobob.net">Program Hub</a>
-        </div>
       </div>
     </section>
 
@@ -975,8 +990,8 @@
               </ul>
             </div>
           </article>
-          <article class="phase-row">
-            <div class="phase-label">
+          <article class="phase-row phase-row--wide-label">
+            <div class="phase-label phase-label--bg-img" style="background-image: url('assets/images/gallery/cliff.png');">
               <span class="phase-chip">MODULE 04</span>
             </div>
             <div class="phase-content">
@@ -1003,8 +1018,8 @@
               </ul>
             </div>
           </article>
-          <article class="phase-row">
-            <div class="phase-label">
+          <article class="phase-row phase-row--wide-label">
+            <div class="phase-label phase-label--bg-img" style="background-image: url('assets/images/gallery/zombieTogeter.jpg');">
               <span class="phase-chip">MODULE 06</span>
             </div>
             <div class="phase-content">
@@ -1013,7 +1028,6 @@
               <ul>
                 <li>독창적인 결과물을 위한 시뮬레이션 기반 모델링 워크플로우</li>
                 <li>VFX 시뮬레이션 데이터로 구동되는 유기적 에셋 및 캐릭터 제작</li>
-                <li>다이나믹 시뮬레이션 데이터와 프로시저럴 시스템의 결합</li>
               </ul>
             </div>
           </article>
