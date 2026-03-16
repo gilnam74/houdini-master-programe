@@ -859,6 +859,25 @@
     }
   </style>
   <script src="assets/js/brand-neon.js" defer></script>
+  <script>
+    function openWhopEnroll(e) {
+      if (e) e.preventDefault();
+      var returnUrl = encodeURIComponent(window.location.href);
+      var checkoutUrl = 'https://whop.com/doobob/live-houdini-master-class/?redirect_url=' + returnUrl;
+      var w = 1020, h = 740;
+      var left = Math.round((screen.width - w) / 2);
+      var top  = Math.round((screen.height - h) / 2);
+      var popup = window.open(
+        checkoutUrl,
+        'whop_checkout',
+        'width=' + w + ',height=' + h + ',left=' + left + ',top=' + top + ',scrollbars=yes,resizable=yes'
+      );
+      if (!popup || popup.closed) {
+        // 팝업이 차단된 경우 새 탭으로 열기
+        window.open(checkoutUrl, '_blank', 'noopener,noreferrer');
+      }
+    }
+  </script>
 </head>
 <body>
 
@@ -946,7 +965,7 @@
           <a href="https://open.kakao.com/o/sN0QsFcc" target="_blank" rel="noopener noreferrer">1:1 상담</a>
         </div>
 
-        <a class="signup-btn-top" href="https://whop.com/doobob/live-houdini-master-class/" target="_blank" rel="noopener noreferrer">수강 신청하기 →</a>
+        <a class="signup-btn-top" href="https://whop.com/doobob/live-houdini-master-class/" onclick="openWhopEnroll(event)">수강 신청하기 →</a>
       </div>
     </section>
 
@@ -1229,7 +1248,7 @@
         <h2>수강 신청</h2>
         <p class="section-intro">12주 집중 라이브 멘토링 프로그램에 지금 바로 등록하세요.<br>가격 확인 및 결제는 Whop 페이지에서 진행됩니다.</p>
         <div class="signup-cta-wrap">
-          <a class="signup-btn" href="https://whop.com/doobob/live-houdini-master-class/" target="_blank" rel="noopener noreferrer">수강 신청하기 →</a>
+          <a class="signup-btn" href="https://whop.com/doobob/live-houdini-master-class/" onclick="openWhopEnroll(event)">수강 신청하기 →</a>
           <span class="signup-note">결제는 Whop 보안 플랫폼에서 안전하게 처리됩니다</span>
         </div>
       </div>
