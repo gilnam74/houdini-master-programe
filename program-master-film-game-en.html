@@ -864,17 +864,7 @@
       if (e) e.preventDefault();
       var returnUrl = encodeURIComponent(window.location.href);
       var checkoutUrl = 'https://whop.com/doobob/live-houdini-master-class/?redirect_url=' + returnUrl;
-      var w = 1020, h = 740;
-      var left = Math.round((screen.width - w) / 2);
-      var top  = Math.round((screen.height - h) / 2);
-      var popup = window.open(
-        checkoutUrl,
-        'whop_checkout',
-        'width=' + w + ',height=' + h + ',left=' + left + ',top=' + top + ',scrollbars=yes,resizable=yes'
-      );
-      if (!popup || popup.closed) {
-        window.open(checkoutUrl, '_blank', 'noopener,noreferrer');
-      }
+      window.open(checkoutUrl, '_blank', 'noopener,noreferrer');
     }
   </script>
 </head>
