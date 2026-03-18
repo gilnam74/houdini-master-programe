@@ -221,7 +221,8 @@
     }
 
     .program-card {
-      display: block;
+      display: flex;
+      flex-direction: column;
       text-decoration: none;
       background: var(--apple-white);
       border: 1px solid var(--apple-border);
@@ -259,6 +260,9 @@
 
     .program-card-body {
       padding: 20px 20px 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
 
     .program-card h2 {
@@ -279,6 +283,8 @@
 
     .learn-more {
       display: inline-block;
+      margin-top: auto;
+      align-self: flex-start;
       background: var(--apple-blue);
       color: #fff;
       text-decoration: none;
