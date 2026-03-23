@@ -1,0 +1,127 @@
+/* ─── Shared Header + Social Bar styles ─────────────────────── */
+
+.apple-header {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--apple-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.apple-header-inner {
+  width: min(1280px, 94vw);
+  margin: 0 auto;
+  padding: 14px 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.home-link {
+  text-decoration: none;
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+}
+
+.site-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0px;
+}
+
+.site-brand img {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.site-brand > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.site-brand h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--apple-text);
+}
+
+.site-brand p {
+  margin: -4px 0 0;
+  font-size: 0.8rem;
+  color: var(--apple-sub);
+  letter-spacing: 0.04em;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.header-nav a {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--apple-sub);
+  text-decoration: none;
+  transition: color 160ms ease;
+  white-space: nowrap;
+}
+
+.header-nav a:hover {
+  color: var(--apple-text);
+  border-bottom: 2px solid var(--apple-text);
+}
+
+.header-nav a.active {
+  color: var(--apple-text);
+  border-bottom: 2px solid var(--apple-text);
+}
+
+/* ─── Social Bar ─────────────────────────────────────────────── */
+
+.social-bar {
+  background: var(--apple-white);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 6px 0;
+}
+
+.social-bar-inner {
+  width: min(1280px, 94vw);
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+  padding-right: 16px;
+}
+
+.social-bar a {
+  display: inline-flex;
+  align-items: center;
+  color: var(--apple-sub);
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.social-bar a:hover { color: var(--apple-text); }
+.social-bar svg { width: 16px; height: 16px; fill: currentColor; }
+
+@media (max-width: 600px) {
+  .apple-header-inner { flex-wrap: wrap; padding: 10px 0; gap: 8px; }
+  .header-nav { width: 100%; justify-content: flex-end; }
+}

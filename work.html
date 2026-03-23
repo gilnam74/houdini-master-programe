@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="header.css" />
   <style>
     :root {
       --apple-white:   #ffffff;
@@ -31,64 +32,6 @@
       display: flex;
       flex-direction: column;
     }
-
-    /* ─── Header ─────────────────────────────────────────────── */
-    .apple-header {
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: saturate(180%) blur(20px);
-      -webkit-backdrop-filter: saturate(180%) blur(20px);
-      border-bottom: 1px solid var(--apple-border);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .apple-header-inner {
-      width: min(var(--apple-max), 94vw);
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 14px 0;
-      flex-wrap: wrap;
-    }
-    .home-link { text-decoration: none; color: inherit; display: inline-flex; align-items: center; }
-    .site-brand { display: inline-flex; align-items: center; gap: 10px; }
-    .site-brand img { width: 36px; height: 36px; object-fit: contain; border-radius: 8px; }
-    .site-brand > div { display: flex; flex-direction: column; gap: 1px; }
-    .site-brand h1 { font-size: 1rem; font-weight: 700; letter-spacing: 0.04em; color: var(--apple-text); }
-    .site-brand p { font-size: 0.62rem; color: var(--apple-sub); letter-spacing: 0.04em; }
-
-    /* ─── Site Nav ───────────────────────────────────────────── */
-    .site-nav {
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: saturate(180%) blur(20px);
-      -webkit-backdrop-filter: saturate(180%) blur(20px);
-      border-bottom: 1px solid var(--apple-border);
-      position: sticky;
-      top: 65px;
-      z-index: 99;
-    }
-    .site-nav-inner {
-      width: min(var(--apple-max), 94vw);
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-    }
-    .site-nav a {
-      display: inline-block;
-      padding: 13px 20px;
-      font-size: 0.82rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--apple-sub);
-      text-decoration: none;
-      transition: color 160ms ease;
-      white-space: nowrap;
-    }
-    .site-nav a:hover { color: var(--apple-text); }
-    .site-nav a.active { color: var(--apple-text); border-bottom: 2px solid var(--apple-text); }
 
     /* ─── Page Hero ──────────────────────────────────────────── */
     .page-hero {
@@ -251,20 +194,33 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.82);
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       z-index: 1000;
       align-items: center;
       justify-content: center;
-      padding: 24px;
+      padding: 32px;
     }
     .modal-backdrop.open { display: flex; }
     .modal-box {
       position: relative;
-      width: min(960px, 100%);
-      background: #000;
-      border-radius: 16px;
+      width: min(1800px, 98vw);
+      max-height: 92vh;
+      background: var(--apple-white);
+      border-radius: 24px;
       overflow: hidden;
-      box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+      box-shadow: 0 48px 120px rgba(0,0,0,0.45);
+      display: grid;
+      grid-template-columns: 75% 25%;
+    }
+    @media (max-width: 800px) {
+      .modal-box { grid-template-columns: 1fr; max-height: none; }
+    }
+    .modal-video-col {
+      background: #000;
+      display: flex;
+      align-items: center;
     }
     .modal-video-wrap {
       position: relative;
@@ -278,21 +234,55 @@
       height: 100%;
       border: none;
     }
+    .modal-info-col {
+      padding: 36px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      background: var(--apple-white);
+      overflow-y: auto;
+    }
+    .modal-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--apple-blue);
+      margin-bottom: 16px;
+    }
+    .modal-title {
+      font-size: clamp(1.4rem, 2.2vw, 2rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--apple-text);
+      margin-bottom: 20px;
+    }
+    .modal-desc {
+      font-size: 1rem;
+      color: var(--apple-sub);
+      line-height: 1.75;
+    }
     .modal-close {
       position: absolute;
-      top: -48px;
-      right: 0;
-      background: none;
+      top: 18px;
+      right: 18px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.07);
       border: none;
-      color: #fff;
-      font-size: 1.5rem;
+      color: var(--apple-text);
+      font-size: 1rem;
       cursor: pointer;
-      padding: 8px;
-      line-height: 1;
-      opacity: 0.8;
-      transition: opacity 160ms;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 160ms;
+      z-index: 10;
     }
-    .modal-close:hover { opacity: 1; }
+    .modal-close:hover { background: rgba(0,0,0,0.15); }
 
     /* ─── Footer ─────────────────────────────────────────────── */
     .site-footer {
@@ -314,30 +304,7 @@
 </head>
 <body>
 
-  <!-- ─── Header ───────────────────────────────────────────────── -->
-  <header class="apple-header">
-    <div class="apple-header-inner">
-      <a class="home-link" href="index.html" aria-label="DOOBOB Home">
-        <div class="site-brand">
-          <img src="assets/images/Doobob-Games-LogoHomePage.png" alt="DOOBOB logo" width="400" height="400" />
-          <div>
-            <h1>DOOBOB</h1>
-            <p>Visual Effect | Game | Commercial | Tech Art | Media Art</p>
-          </div>
-        </div>
-      </a>
-    </div>
-  </header>
-
-  <!-- ─── Nav Bar ──────────────────────────────────────────────── -->
-  <nav class="site-nav" aria-label="Main navigation">
-    <div class="site-nav-inner">
-      <a href="about.html">About</a>
-      <a href="work.html" class="active">Work</a>
-      <a href="contact.html">Contact</a>
-      <a href="careers.html">Careers</a>
-    </div>
-  </nav>
+  <div id="site-header"></div>
 
   <!-- ─── Hero ─────────────────────────────────────────────────── -->
   <section class="page-hero">
@@ -452,6 +419,23 @@
           </div>
         </div>
 
+        <div class="video-card" data-category="tech-art" data-embed="https://www.youtube.com/embed/CnhPFIcG5q8?autoplay=1">
+          <div class="video-thumb-wrap">
+            <img class="video-thumb" src="https://img.youtube.com/vi/CnhPFIcG5q8/maxresdefault.jpg" alt="Houdini Tech Art thumbnail" loading="lazy" onerror="this.src='assets/images/portfolio_image.jpg'" />
+            <div class="play-btn" aria-hidden="true">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="32" fill="rgba(255,255,255,0.18)"/>
+                <polygon points="26,20 48,32 26,44" fill="white"/>
+              </svg>
+            </div>
+          </div>
+          <div class="video-card-body">
+            <span class="video-tag">Tech Art</span>
+            <h3>AI Mesh Generator</h3>
+            <p>AI-powered mesh generation tool that creates optimized 3D geometry from text prompts and reference images, integrated into Houdini and game engine pipelines.</p>
+          </div>
+        </div>
+
         <div class="video-card" data-category="tech-art" data-embed="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1">
           <div class="video-thumb-wrap">
             <img class="video-thumb" src="assets/images/portfolio_image.jpg" alt="Tech Art thumbnail" loading="lazy" />
@@ -512,12 +496,19 @@
     © 2026 DOOBOB. All rights reserved.
   </footer>
 
-  <!-- ─── Video Modal ───────────────────────────────────────────── -->
-  <div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-label="Video player">
+  <!-- ─── Detail Modal ─────────────────────────────────────────── -->
+  <div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-label="Work detail">
     <div class="modal-box">
-      <button class="modal-close" id="modal-close" aria-label="Close video">✕</button>
-      <div class="modal-video-wrap">
-        <iframe id="modal-iframe" src="" allow="autoplay; fullscreen" allowfullscreen title="Work video"></iframe>
+      <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
+      <div class="modal-video-col">
+        <div class="modal-video-wrap">
+          <iframe id="modal-iframe" src="" allow="autoplay; fullscreen" allowfullscreen title="Work video"></iframe>
+        </div>
+      </div>
+      <div class="modal-info-col">
+        <span class="modal-tag" id="modal-tag"></span>
+        <h2 class="modal-title" id="modal-title"></h2>
+        <p class="modal-desc" id="modal-desc"></p>
       </div>
     </div>
   </div>
@@ -547,11 +538,18 @@
     const iframe   = document.getElementById('modal-iframe');
     const closeBtn = document.getElementById('modal-close');
 
+    const modalTag   = document.getElementById('modal-tag');
+    const modalTitle = document.getElementById('modal-title');
+    const modalDesc  = document.getElementById('modal-desc');
+
     cards.forEach(card => {
       card.addEventListener('click', () => {
         const embedUrl = card.dataset.embed;
         if (!embedUrl) return;
         iframe.src = embedUrl;
+        modalTag.textContent   = card.querySelector('.video-tag')?.textContent || '';
+        modalTitle.textContent = card.querySelector('h3')?.textContent || '';
+        modalDesc.textContent  = card.querySelector('p')?.textContent || '';
         modal.classList.add('open');
         document.body.style.overflow = 'hidden';
       });
@@ -567,5 +565,6 @@
     modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
   </script>
+  <script src="header.js"></script>
 </body>
 </html>

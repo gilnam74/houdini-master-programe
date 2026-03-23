@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Houdini Procedural Tech Art | DOOBOB</title>
+  <meta name="description" content="Houdini procedural tech art — AI-driven pipeline tools and procedural generation for film and game production." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="header.css" />
+  <style>
+    :root {
+      --apple-white:   #ffffff;
+      --apple-light:   #f5f5f7;
+      --apple-text:    #1d1d1f;
+      --apple-sub:     #6e6e73;
+      --apple-blue:    #0071e3;
+      --apple-border:  #d2d2d7;
+      --apple-radius:  18px;
+      --apple-font:    -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", system-ui, "Space Grotesk", sans-serif;
+      --apple-max:     1280px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--apple-font);
+      color: var(--apple-text);
+      background: var(--apple-white);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ─── Back Link ───────────────────────────────────────────── */
+    .back-bar {
+      background: var(--apple-light);
+      border-bottom: 1px solid var(--apple-border);
+      padding: 12px 0;
+    }
+    .back-bar-inner {
+      width: min(var(--apple-max), 94vw);
+      margin: 0 auto;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--apple-sub);
+      text-decoration: none;
+      transition: color 160ms ease;
+    }
+    .back-link:hover { color: var(--apple-text); }
+    .back-link svg { width: 16px; height: 16px; }
+
+    /* ─── Detail Layout ───────────────────────────────────────── */
+    .detail-section {
+      flex: 1;
+      padding: 60px 0 80px;
+      background: var(--apple-white);
+    }
+    .detail-inner {
+      width: min(var(--apple-max), 94vw);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+    @media (max-width: 780px) {
+      .detail-inner { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    /* Video */
+    .detail-video-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 20px 56px rgba(0,0,0,0.14);
+    }
+    .detail-video-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Description */
+    .detail-info { padding-top: 4px; }
+    .detail-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--apple-blue);
+      margin-bottom: 14px;
+    }
+    .detail-info h2 {
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--apple-text);
+      margin-bottom: 20px;
+    }
+    .detail-info p {
+      font-size: 0.95rem;
+      color: var(--apple-sub);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .detail-info ul {
+      list-style: none;
+      margin: 24px 0 0;
+    }
+    .detail-info ul li {
+      font-size: 0.9rem;
+      color: var(--apple-sub);
+      line-height: 1.6;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--apple-border);
+      display: flex;
+      gap: 10px;
+    }
+    .detail-info ul li:first-child { border-top: 1px solid var(--apple-border); }
+    .detail-info ul li span:first-child {
+      font-weight: 600;
+      color: var(--apple-text);
+      min-width: 100px;
+    }
+
+    /* ─── Footer ─────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--apple-light);
+      border-top: 1px solid var(--apple-border);
+      padding: 28px 0;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--apple-sub);
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-header"></div>
+
+  <!-- ─── Back ──────────────────────────────────────────────────── -->
+  <div class="back-bar">
+    <div class="back-bar-inner">
+      <a class="back-link" href="work.html">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Back to Work
+      </a>
+    </div>
+  </div>
+
+  <!-- ─── Detail ───────────────────────────────────────────────── -->
+  <section class="detail-section">
+    <div class="detail-inner">
+
+      <!-- Video -->
+      <div class="detail-video-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/CnhPFIcG5q8"
+          allow="autoplay; fullscreen"
+          allowfullscreen
+          title="Houdini Procedural Tech Art">
+        </iframe>
+      </div>
+
+      <!-- Description -->
+      <div class="detail-info">
+        <span class="detail-tag">Tech Art</span>
+        <h2>Houdini Procedural Tech Art</h2>
+        <p>
+          An exploration of procedural techniques in Houdini — combining node-based workflows,
+          AI-assisted automation, and custom HDA tools to push the boundaries of technical artistry
+          in film and game production.
+        </p>
+        <p>
+          This work demonstrates how procedural generation can accelerate production pipelines while
+          maintaining full artistic control, enabling scalable and repeatable asset creation at studio quality.
+        </p>
+        <ul>
+          <li><span>Category</span><span>Tech Art</span></li>
+          <li><span>Tools</span><span>Houdini, Python, AI Pipeline</span></li>
+          <li><span>Studio</span><span>DOOBOB</span></li>
+          <li><span>Year</span><span>2025</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── Footer ───────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    © 2026 DOOBOB. All rights reserved.
+  </footer>
+
+  <script src="header.js"></script>
+</body>
+</html>

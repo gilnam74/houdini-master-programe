@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="header.css" />
   <style>
     :root {
       --apple-white:   #ffffff;
@@ -18,7 +19,7 @@
       --apple-border:  #d2d2d7;
       --apple-radius:  18px;
       --apple-font:    -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", system-ui, "Space Grotesk", sans-serif;
-      --apple-max:     1200px;
+      --apple-max:     1280px;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -30,45 +31,6 @@
       display: flex;
       flex-direction: column;
     }
-
-    /* ─── Header ─────────────────────────────────────────────── */
-    .apple-header {
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: saturate(180%) blur(20px);
-      -webkit-backdrop-filter: saturate(180%) blur(20px);
-      border-bottom: 1px solid var(--apple-border);
-      position: sticky; top: 0; z-index: 100;
-    }
-    .apple-header-inner {
-      width: min(var(--apple-max), 94vw);
-      margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 16px; padding: 14px 0; flex-wrap: wrap;
-    }
-    .home-link { text-decoration: none; color: inherit; display: inline-flex; align-items: center; }
-    .site-brand { display: inline-flex; align-items: center; gap: 10px; }
-    .site-brand img { width: 36px; height: 36px; object-fit: contain; border-radius: 8px; }
-    .site-brand > div { display: flex; flex-direction: column; gap: 1px; }
-    .site-brand h1 { font-size: 1rem; font-weight: 700; letter-spacing: 0.04em; color: var(--apple-text); }
-    .site-brand p { font-size: 0.62rem; color: var(--apple-sub); letter-spacing: 0.04em; }
-
-    /* ─── Site Nav ───────────────────────────────────────────── */
-    .site-nav {
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: saturate(180%) blur(20px);
-      -webkit-backdrop-filter: saturate(180%) blur(20px);
-      border-bottom: 1px solid var(--apple-border);
-      position: sticky; top: 65px; z-index: 99;
-    }
-    .site-nav-inner { width: min(var(--apple-max), 94vw); margin: 0 auto; display: flex; align-items: center; }
-    .site-nav a {
-      display: inline-block; padding: 13px 20px;
-      font-size: 0.82rem; font-weight: 500; letter-spacing: 0.04em;
-      text-transform: uppercase; color: var(--apple-sub);
-      text-decoration: none; transition: color 160ms ease; white-space: nowrap;
-    }
-    .site-nav a:hover { color: var(--apple-text); }
-    .site-nav a.active { color: var(--apple-text); border-bottom: 2px solid var(--apple-text); }
 
     /* ─── Page Hero ──────────────────────────────────────────── */
     .page-hero {
@@ -176,30 +138,7 @@
 </head>
 <body>
 
-  <!-- ─── Header ───────────────────────────────────────────────── -->
-  <header class="apple-header">
-    <div class="apple-header-inner">
-      <a class="home-link" href="index.html" aria-label="DOOBOB Home">
-        <div class="site-brand">
-          <img src="assets/images/Doobob-Games-LogoHomePage.png" alt="DOOBOB logo" width="400" height="400" />
-          <div>
-            <h1>DOOBOB</h1>
-            <p>Visual Effect | Game | Commercial | Tech Art | Media Art</p>
-          </div>
-        </div>
-      </a>
-    </div>
-  </header>
-
-  <!-- ─── Nav Bar ──────────────────────────────────────────────── -->
-  <nav class="site-nav" aria-label="Main navigation">
-    <div class="site-nav-inner">
-      <a href="about.html" class="active">About</a>
-      <a href="work.html">Work</a>
-      <a href="contact.html">Contact</a>
-      <a href="careers.html">Careers</a>
-    </div>
-  </nav>
+  <div id="site-header"></div>
 
   <!-- ─── Hero ─────────────────────────────────────────────────── -->
   <section class="page-hero">
@@ -278,5 +217,6 @@
     © 2026 DOOBOB. All rights reserved.
   </footer>
 
+  <script src="header.js"></script>
 </body>
 </html>
