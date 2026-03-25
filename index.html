@@ -157,12 +157,8 @@
     }
 
     .hero-video-inner {
-      width: min(1280px, 94vw);
+      width: min(1440px, 96vw);
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 340px;
-      gap: 40px;
-      align-items: center;
     }
 
     .hero-kicker {
@@ -233,72 +229,6 @@
     }
 
     /* ─── Hero Side Panel ────────────────────────────────────── */
-    .hero-side {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .hero-side-title {
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--apple-blue);
-      margin: 0 0 20px;
-    }
-
-    .hero-page-link {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      padding: 18px 0;
-      border-top: 1px solid var(--apple-border);
-      text-decoration: none;
-      color: inherit;
-      transition: opacity 160ms ease;
-    }
-
-    .hero-page-link:last-child { border-bottom: 1px solid var(--apple-border); }
-    .hero-page-link:hover { opacity: 0.65; }
-
-    .hero-page-icon {
-      font-size: 1.4rem;
-      line-height: 1;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .hero-page-link h3 {
-      font-size: 0.95rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      color: var(--apple-text);
-      margin: 0 0 4px;
-    }
-
-    .hero-page-link p {
-      font-size: 0.8rem;
-      color: var(--apple-sub);
-      line-height: 1.5;
-      margin: 0;
-    }
-
-    .hero-page-arrow {
-      margin-left: auto;
-      color: var(--apple-sub);
-      font-size: 1rem;
-      align-self: center;
-      flex-shrink: 0;
-    }
-
-    @media (max-width: 1000px) {
-      .hero-video-inner {
-        grid-template-columns: 1fr;
-      }
-      .hero-side { display: none; }
-    }
-
     /* ─── Program Grid ───────────────────────────────────────── */
     .programs-section {
       background: var(--apple-light);
@@ -470,51 +400,6 @@
           title="DOOBOB Film Art Reel">
         </iframe>
       </div>
-
-      <!-- Side panel (right) -->
-      <aside class="hero-side">
-        <div class="hero-text">
-          <h2>Where AI Meets Visual Storytelling</h2>
-          <p>DOOBOB bridges cutting-edge AI technology with world-class visual storytelling, delivering film VFX, game art, commercial production, and media art experiences.</p>
-        </div>
-        <p class="hero-side-title">Explore</p>
-
-        <a class="hero-page-link" href="about.html">
-          <span class="hero-page-icon">🎬</span>
-          <div>
-            <h3>About</h3>
-            <p>AI-driven studio for VFX, game, commercial, and media art production.</p>
-          </div>
-          <span class="hero-page-arrow">›</span>
-        </a>
-
-        <a class="hero-page-link" href="work.html">
-          <span class="hero-page-icon">▶</span>
-          <div>
-            <h3>Work</h3>
-            <p>Video portfolio — film reels, game FX, commercials, and tech art breakdowns.</p>
-          </div>
-          <span class="hero-page-arrow">›</span>
-        </a>
-
-        <a class="hero-page-link" href="contact.html">
-          <span class="hero-page-icon">✉️</span>
-          <div>
-            <h3>Contact</h3>
-            <p>Project inquiries and collaboration requests across Vancouver, Seoul, and LA.</p>
-          </div>
-          <span class="hero-page-arrow">›</span>
-        </a>
-
-        <a class="hero-page-link" href="careers.html">
-          <span class="hero-page-icon">⚡</span>
-          <div>
-            <h3>Careers</h3>
-            <p>Open roles in Houdini FX, Unreal Engine, AI pipeline, and media art.</p>
-          </div>
-          <span class="hero-page-arrow">›</span>
-        </a>
-      </aside>
 
     </div>
   </section>
