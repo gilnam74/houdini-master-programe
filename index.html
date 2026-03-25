@@ -228,6 +228,52 @@
       border: none;
     }
 
+    .hero-video-player::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.42));
+      pointer-events: none;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .hero-overlay-inner {
+      max-width: 760px;
+      color: #fff;
+    }
+
+    .hero-overlay .hero-kicker {
+      color: #8fc2ff;
+      margin-bottom: 16px;
+    }
+
+    .hero-overlay h2 {
+      margin: 0 0 18px;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+    }
+
+    .hero-overlay p {
+      margin: 0 auto;
+      max-width: 640px;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.86);
+    }
+
     /* ─── Hero Side Panel ────────────────────────────────────── */
     /* ─── Program Grid ───────────────────────────────────────── */
     .programs-section {
@@ -351,6 +397,8 @@
       .program-grid { grid-template-columns: 1fr; }
       .apple-header-inner { flex-wrap: wrap; padding: 10px 0; gap: 8px; }
       .header-nav { width: 100%; justify-content: flex-end; }
+      .hero-overlay { padding: 24px; }
+      .hero-overlay p { font-size: 0.92rem; line-height: 1.55; }
     }
   </style>
 </head>
@@ -399,6 +447,13 @@
           allowfullscreen
           title="DOOBOB Film Art Reel">
         </iframe>
+        <div class="hero-overlay">
+          <div class="hero-overlay-inner">
+            <span class="hero-kicker">Who We Are</span>
+            <h2>Where AI Meets Visual Storytelling</h2>
+            <p>DOOBOB bridges cutting-edge AI technology with world-class visual storytelling, delivering film VFX, game art, commercial production, and media art experiences.</p>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -440,14 +495,16 @@
         </a>
 
         <a class="program-card"
-           href="program-procedural-generation-en.html"
-           aria-label="Procedural Generation Program, 12 weeks">
+           href="https://youtu.be/57LjalbPBj0"
+           aria-label="AI Animation on YouTube"
+           target="_blank"
+           rel="noopener noreferrer">
           <div class="program-thumb-wrap">
-            <img class="program-thumb" src="assets/images/matrix_city.jpeg" alt="Procedural generation visual preview" width="1600" height="666" loading="lazy" />
+            <img class="program-thumb" src="https://img.youtube.com/vi/57LjalbPBj0/maxresdefault.jpg" alt="AI Animation video thumbnail" width="1280" height="720" loading="lazy" />
           </div>
           <div class="program-card-body">
-            <h2>Procedural Generation Program (12 weeks)</h2>
-            <p>Scalable content creation and technical art foundations with hands-on procedural workflows.</p>
+            <h2>AI Animation</h2>
+            <p>Watch the latest AI animation showcase on YouTube.</p>
             <span class="learn-more">Learn More</span>
           </div>
         </a>
