@@ -176,26 +176,26 @@
     }
 
     .hero-text {
-      text-align: center;
-      padding: 20px 0;
+      text-align: left;
+      padding: 0 0 20px;
     }
 
     .hero-text h2 {
-      font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+      font-size: clamp(1.2rem, 1.8vw, 1.6rem);
       font-weight: 700;
-      letter-spacing: -0.04em;
-      line-height: 1.1;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
       color: var(--apple-text);
-      margin: 0 0 16px;
-      white-space: nowrap;
+      margin: 0 0 10px;
+      white-space: normal;
     }
 
     .hero-text p {
-      font-size: 1rem;
+      font-size: 0.82rem;
       color: var(--apple-sub);
-      line-height: 1.65;
-      max-width: 600px;
-      margin: 0 auto 28px;
+      line-height: 1.6;
+      max-width: 100%;
+      margin: 0 0 16px;
     }
 
     .hero-cta {
@@ -462,10 +462,6 @@
   <!-- ─── Hero Video ────────────────────────────────────────── -->
   <section class="hero-video-section" aria-label="Film Art Reel showcase">
     <div class="hero-video-inner">
-      <div class="hero-text">
-        <h2>Where AI Meets Visual Storytelling</h2>
-        <p>DOOBOB bridges cutting-edge AI technology with world-class visual storytelling, delivering film VFX, game art, commercial production, and media art experiences.</p>
-      </div>
       <div class="hero-video-player">
         <iframe
           src="https://player.vimeo.com/video/326981893?autoplay=1&loop=1&muted=1&background=1"
@@ -477,6 +473,10 @@
 
       <!-- Side panel (right) -->
       <aside class="hero-side">
+        <div class="hero-text">
+          <h2>Where AI Meets Visual Storytelling</h2>
+          <p>DOOBOB bridges cutting-edge AI technology with world-class visual storytelling, delivering film VFX, game art, commercial production, and media art experiences.</p>
+        </div>
         <p class="hero-side-title">Explore</p>
 
         <a class="hero-page-link" href="about.html">
