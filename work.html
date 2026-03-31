@@ -214,6 +214,13 @@
       display: grid;
       grid-template-columns: 75% 25%;
     }
+    .modal-box.viewer-mode {
+      width: min(1920px, 98vw);
+      height: min(94vh, 1400px);
+      max-height: 94vh;
+      grid-template-columns: 1fr;
+      background: #000;
+    }
     @media (max-width: 800px) {
       .modal-box { grid-template-columns: 1fr; max-height: none; }
     }
@@ -226,6 +233,10 @@
       position: relative;
       width: 100%;
       aspect-ratio: 16 / 9;
+    }
+    .modal-box.viewer-mode .modal-video-wrap {
+      height: 100%;
+      aspect-ratio: auto;
     }
     .modal-video-wrap iframe {
       position: absolute;
@@ -241,6 +252,9 @@
       justify-content: flex-start;
       background: var(--apple-white);
       overflow-y: auto;
+    }
+    .modal-box.viewer-mode .modal-info-col {
+      display: none;
     }
     .modal-tag {
       display: inline-block;
@@ -283,6 +297,13 @@
       z-index: 10;
     }
     .modal-close:hover { background: rgba(0,0,0,0.15); }
+    .modal-box.viewer-mode .modal-close {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+    }
+    .modal-box.viewer-mode .modal-close:hover {
+      background: rgba(255,255,255,0.22);
+    }
 
     /* ─── Footer ─────────────────────────────────────────────── */
     .site-footer {
@@ -454,9 +475,9 @@
           </div>
         </div>
 
-        <div class="video-card" data-category="tech-art" data-embed="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1">
+        <div class="video-card" data-category="tech-art" data-embed="koala.html?content=./koala.sog" data-modal-mode="viewer">
           <div class="video-thumb-wrap">
-            <img class="video-thumb" src="assets/images/portfolio_image.jpg" alt="Tech Art thumbnail" loading="lazy" />
+            <img class="video-thumb" src="assets/images/koala-sog-thumbnail.png" alt="3D Gaussian Splatting thumbnail" loading="lazy" />
             <div class="play-btn" aria-hidden="true">
               <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="32" cy="32" r="32" fill="rgba(255,255,255,0.18)"/>
@@ -466,42 +487,8 @@
           </div>
           <div class="video-card-body">
             <span class="video-tag">Tech Art</span>
-            <h3>Procedural Pipeline Tools</h3>
-            <p>Custom HDA library for automated LOD generation and asset packaging.</p>
-          </div>
-        </div>
-
-        <div class="video-card" data-category="media-art" data-embed="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1">
-          <div class="video-thumb-wrap">
-            <img class="video-thumb" src="assets/images/aipowered_banner.png" alt="Media Art thumbnail" loading="lazy" />
-            <div class="play-btn" aria-hidden="true">
-              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="32" cy="32" r="32" fill="rgba(255,255,255,0.18)"/>
-                <polygon points="26,20 48,32 26,44" fill="white"/>
-              </svg>
-            </div>
-          </div>
-          <div class="video-card-body">
-            <span class="video-tag">Media Art</span>
-            <h3>Generative AI Installation</h3>
-            <p>Interactive media art piece combining AI image generation with real-time rendering.</p>
-          </div>
-        </div>
-
-        <div class="video-card" data-category="vfx" data-embed="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1">
-          <div class="video-thumb-wrap">
-            <img class="video-thumb" src="assets/images/houd_foundations.jpeg" alt="VFX breakdown thumbnail" loading="lazy" />
-            <div class="play-btn" aria-hidden="true">
-              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="32" cy="32" r="32" fill="rgba(255,255,255,0.18)"/>
-                <polygon points="26,20 48,32 26,44" fill="white"/>
-              </svg>
-            </div>
-          </div>
-          <div class="video-card-body">
-            <span class="video-tag">VFX</span>
-            <h3>Crowd & Destruction Breakdown</h3>
-            <p>Behind-the-scenes look at crowd simulation and building collapse FX.</p>
+            <h3>3D Gaussian Splatting</h3>
+            <p>Interactive web viewer for the koala Gaussian splat scene packaged as a .sog asset.</p>
           </div>
         </div>
 
@@ -516,7 +503,7 @@
 
   <!-- ─── Detail Modal ─────────────────────────────────────────── -->
   <div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-label="Work detail">
-    <div class="modal-box">
+    <div class="modal-box" id="modal-box">
       <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
       <div class="modal-video-col">
         <div class="modal-video-wrap">
@@ -553,6 +540,7 @@
 
     // ── Modal ───────────────────────────────────────────────────
     const modal    = document.getElementById('modal');
+    const modalBox = document.getElementById('modal-box');
     const iframe   = document.getElementById('modal-iframe');
     const closeBtn = document.getElementById('modal-close');
 
@@ -565,6 +553,8 @@
         const embedUrl = card.dataset.embed;
         if (!embedUrl) return;
         iframe.src = embedUrl;
+        const isViewerMode = card.dataset.modalMode === 'viewer';
+        modalBox.classList.toggle('viewer-mode', isViewerMode);
         modalTag.textContent   = card.querySelector('.video-tag')?.textContent || '';
         modalTitle.textContent = card.querySelector('h3')?.textContent || '';
         modalDesc.textContent  = card.querySelector('p')?.textContent || '';
@@ -575,6 +565,7 @@
 
     function closeModal() {
       modal.classList.remove('open');
+      modalBox.classList.remove('viewer-mode');
       iframe.src = '';
       document.body.style.overflow = '';
     }
