@@ -668,7 +668,7 @@
 
             window.sse = {
                 config: sseConfig,
-                settings: {"version":2,"tonemapping":"none","highPrecisionRendering":false,"background":{"color":[0,0,0]},"postEffectSettings":{"sharpness":{"enabled":false,"amount":0},"bloom":{"enabled":false,"intensity":1,"blurLevel":2},"grading":{"enabled":false,"brightness":0,"contrast":1,"saturation":1,"tint":[1,1,1]},"vignette":{"enabled":false,"intensity":0.5,"inner":0.3,"outer":0.75,"curvature":1},"fringing":{"enabled":false,"intensity":0.5}},"animTracks":[],"cameras":[{"initial":{"position":[0.45215246081352234,2.0252461433410645,-4.968324661254883],"target":[0,0.5,0],"fov":75}}],"annotations":[],"startMode":"default"}
+                settings: {"version":2,"tonemapping":"none","highPrecisionRendering":false,"background":{"color":[0,0,0]},"postEffectSettings":{"sharpness":{"enabled":false,"amount":0},"bloom":{"enabled":false,"intensity":1,"blurLevel":2},"grading":{"enabled":false,"brightness":0,"contrast":1,"saturation":1,"tint":[1,1,1]},"vignette":{"enabled":false,"intensity":0.5,"inner":0.3,"outer":0.75,"curvature":1},"fringing":{"enabled":false,"intensity":0.5}},"animTracks":[],"cameras":[{"initial":{"position":[0.28,1.92,-4.2],"target":[0.24,0.52,0],"fov":75}}],"annotations":[],"startMode":"default"}
             };
         </script>
     </head>
@@ -73788,7 +73788,7 @@ const initUI = (global) => {
             return window.location.hostname !== window.parent.location.hostname;
         }
         catch (e) {
-            // cross-origin iframe — parent location is inaccessible
+            // cross-origin iframe � parent location is inaccessible
             return true;
         }
     };
@@ -75781,9 +75781,9 @@ class InputController {
     _pinchVelocity = 0;
     // Accumulated strafe/vertical velocity from two-finger pan [x, y] (-1 to 1)
     _panVelocity = [0, 0];
-    // Sensitivity for pinch delta → velocity conversion
+    // Sensitivity for pinch delta ? velocity conversion
     pinchVelocitySensitivity = 0.006;
-    // Sensitivity for two-finger pan delta → velocity conversion
+    // Sensitivity for two-finger pan delta ? velocity conversion
     panVelocitySensitivity = 0.005;
     // Tap-to-jump state (uses existing MultiTouchSource count/touch deltas)
     _tapTouches = 0;
@@ -76032,7 +76032,7 @@ class InputController {
         const cameraPos = camera.getPosition();
         camera.camera.screenToWorld(offsetX, offsetY, 1.0, tmpV1);
         tmpV1.sub(cameraPos).normalize();
-        // PlayCanvas → voxel space: negate X and Y
+        // PlayCanvas ? voxel space: negate X and Y
         const hit = this.collider.queryRay(-cameraPos.x, -cameraPos.y, cameraPos.z, -tmpV1.x, -tmpV1.y, tmpV1.z, camera.camera.farClip);
         if (!hit)
             return null;
@@ -76076,7 +76076,7 @@ class InputController {
         if (isWalk) {
             const prevTaps = this._tapTouches;
             this._tapTouches = Math.max(0, this._tapTouches + count[0]);
-            // Touch just started (0 → 1+)
+            // Touch just started (0 ? 1+)
             if (prevTaps === 0 && this._tapTouches > 0) {
                 this._tapDelta = 0;
             }
@@ -76090,7 +76090,7 @@ class InputController {
                     }
                 }
             }
-            // Touch just ended (1+ → 0): check if it was a tap
+            // Touch just ended (1+ ? 0): check if it was a tap
             if (prevTaps > 0 && this._tapTouches === 0) {
                 if (this._tapDelta < TAP_EPSILON) {
                     if (!state.gamingControls) {
@@ -76111,7 +76111,7 @@ class InputController {
         const isFirstPerson = state.cameraMode === 'fly' || isWalk;
         // Accumulate pinch and pan deltas into velocity when not in gaming controls
         // pinch[0] = oldDist - newDist: negative when spreading, positive when closing
-        // Spreading = forward → subtract pinch delta
+        // Spreading = forward ? subtract pinch delta
         if (isFirstPerson && !state.gamingControls && this._state.touches > 1) {
             this._pinchVelocity -= pinch[0] * this.pinchVelocitySensitivity;
             this._pinchVelocity = math.clamp(this._pinchVelocity, -1, 1.0);
@@ -76172,10 +76172,10 @@ class InputController {
             v.add(flyMove.mulScalar(fly * this.moveSpeed * dt));
         }
         else {
-            // Pan velocity → strafe (X) and vertical (Y, fly only — walk uses gravity)
+            // Pan velocity ? strafe (X) and vertical (Y, fly only � walk uses gravity)
             flyTouchPan.set(this._panVelocity[0], isWalk ? 0 : -this._panVelocity[1], 0);
             v.add(flyTouchPan.mulScalar(fly * this.touchPinchMoveSensitivity * this.moveSpeed * dt));
-            // Pinch velocity → forward/backward
+            // Pinch velocity ? forward/backward
             flyMove.set(0, 0, this._pinchVelocity);
             v.add(flyMove.mulScalar(fly * this.touchPinchMoveSensitivity * this.moveSpeed * dt));
         }
@@ -76307,7 +76307,7 @@ fn queryBlock(bx: i32, by: i32, bz: i32) -> vec2u {
     return vec2u(2u + leafIdx, 0u);
 }
 
-// Ray-AABB intersection returning (tNear, tFar). If tNear > tFar → miss.
+// Ray-AABB intersection returning (tNear, tFar). If tNear > tFar ? miss.
 fn intersectAABB(ro: vec3f, invDir: vec3f, bmin: vec3f, bmax: vec3f) -> vec2f {
     let t1 = (bmin - ro) * invDir;
     let t2 = (bmax - ro) * invDir;
@@ -79431,7 +79431,7 @@ const initCanvas = (global) => {
     });
     // Resize canvas before render() so the swap chain texture is acquired at the correct size.
     app.on('framerender', apply);
-    // Disable the engine's built-in canvas resize — we handle it via ResizeObserver
+    // Disable the engine's built-in canvas resize � we handle it via ResizeObserver
     // @ts-ignore
     app._allowResize = false;
     set(canvas.clientWidth, canvas.clientHeight);
