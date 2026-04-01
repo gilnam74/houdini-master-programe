@@ -230,105 +230,6 @@
       border: none;
     }
 
-    /* ─── Hero Side Panel ────────────────────────────────────── */
-    /* ─── Program Grid ───────────────────────────────────────── */
-    .programs-section {
-      background: var(--apple-light);
-      padding: 56px 0 80px;
-    }
-
-    .programs-inner {
-      width: min(var(--apple-max), 94vw);
-      margin: 0 auto;
-    }
-
-    .program-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 20px;
-    }
-
-    .program-card {
-      display: flex;
-      flex-direction: column;
-      text-decoration: none;
-      background: var(--apple-white);
-      border: 1px solid var(--apple-border);
-      border-radius: var(--apple-radius);
-      padding: 0;
-      color: var(--apple-text);
-      overflow: hidden;
-      transition: box-shadow 200ms ease, transform 200ms ease;
-      cursor: pointer;
-    }
-
-    .program-card:hover {
-      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.10);
-      transform: translateY(-4px);
-    }
-
-    .program-thumb-wrap {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      overflow: hidden;
-      background: var(--apple-light);
-    }
-
-    .program-thumb {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 300ms ease;
-    }
-
-    .program-card:hover .program-thumb {
-      transform: scale(1.04);
-    }
-
-    .program-card-body {
-      padding: 28px 28px 32px;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-
-    .program-card h2 {
-      margin: 0 0 12px;
-      font-size: 1.3rem;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1.25;
-      color: var(--apple-text);
-    }
-
-    .program-card p {
-      margin: 0 0 24px;
-      font-size: 0.95rem;
-      line-height: 1.65;
-      color: var(--apple-sub);
-    }
-
-    .learn-more {
-      display: inline-block;
-      margin-top: auto;
-      align-self: flex-start;
-      background: transparent;
-      color: var(--apple-text);
-      text-decoration: none;
-      padding: 10px 24px;
-      border-radius: 999px;
-      border: 1.5px solid var(--apple-text);
-      font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 0.01em;
-      transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
-    }
-
-    .learn-more:hover {
-      background: var(--apple-text);
-      color: #fff;
-    }
 
     /* ─── Footer ─────────────────────────────────────────────── */
     .site-footer {
@@ -341,16 +242,13 @@
     }
 
     /* ─── Responsive ─────────────────────────────────────────── */
-    @media (max-width: 1100px) {
-      .program-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    }
+    /* ─── Responsive ─────────────────────────────────────────── */
 
     @media (max-width: 680px) {
       .header-nav a { padding: 7px 10px; font-size: 0.76rem; }
     }
 
     @media (max-width: 600px) {
-      .program-grid { grid-template-columns: 1fr; }
       .apple-header-inner { flex-wrap: wrap; padding: 10px 0; gap: 8px; }
       .header-nav { width: 100%; justify-content: flex-end; }
       .hero-text { padding: 0 0 24px; }
@@ -413,101 +311,10 @@
     </div>
   </section>
 
-  <!-- ─── Program Grid ──────────────────────────────────────── -->
-  <section class="programs-section" aria-label="Program list">
-    <div class="programs-inner">
-      <div class="program-grid">
-
-        <a class="program-card"
-           href="artist-gallery.html"
-           data-href-en="artist-gallery.html"
-           data-href-ko="artist-gallery-ko.html"
-           aria-label="Artist page for Choi Gil Nam">
-          <div class="program-thumb-wrap">
-            <img class="program-thumb" src="assets/images/gallery/mypictureThumnail.JPG" alt="Portrait preview for artist Choi Gil Nam" width="1280" height="720" loading="lazy" />
-          </div>
-          <div class="program-card-body">
-            <h2>Artist</h2>
-            <p>Gallery page for Choi Gil Nam — image archive with click-to-enlarge viewing.</p>
-            <span class="learn-more">Learn More</span>
-          </div>
-        </a>
-
-        <a class="program-card"
-           href="program-master-film-game-en.html"
-           data-href-en="program-master-film-game-en.html"
-           data-href-ko="program-master-film-game.html"
-           aria-label="Houdini Master Program - Film and Game, 12 weeks">
-          <div class="program-thumb-wrap">
-            <img class="program-thumb" src="assets/images/HoudiniVFXGameThumnail.jpg" alt="Houdini master film and game visual preview" width="600" height="600" loading="lazy" />
-          </div>
-          <div class="program-card-body">
-            <h2>Houdini Master Program – Film &amp; Game (12 weeks)</h2>
-            <p>Advanced production track for Film and Game FX with portfolio-focused live mentoring.</p>
-            <span class="learn-more">Learn More</span>
-          </div>
-        </a>
-
-        <a class="program-card"
-           href="program-procedural-generation-en.html"
-           aria-label="Procedural Generation Program, 12 weeks">
-          <div class="program-thumb-wrap">
-            <img class="program-thumb" src="assets/images/matrix_city.jpeg" alt="Procedural generation visual preview" width="1600" height="666" loading="lazy" />
-          </div>
-          <div class="program-card-body">
-            <h2>Procedural Generation Program (12 weeks)</h2>
-            <p>Scalable content creation and technical art foundations with hands-on procedural workflows.</p>
-            <span class="learn-more">Learn More</span>
-          </div>
-        </a>
-
-        <a class="program-card"
-           href="program-portfolio.html"
-           aria-label="Portfolio Program">
-          <div class="program-thumb-wrap">
-            <img class="program-thumb" src="assets/images/portfolio_image.jpg" alt="Portfolio program visual preview" width="512" height="512" loading="lazy" />
-          </div>
-          <div class="program-card-body">
-            <h2>Portfolio Program</h2>
-            <p>Mentored portfolio development for studio-ready final shots, breakdowns, and presentations.</p>
-            <span class="learn-more">Learn More</span>
-          </div>
-        </a>
-
-      </div>
-    </div>
-  </section>
 
   <footer class="site-footer">
     © 2026 DOOBOB. All rights reserved.
   </footer>
 
-  <script>
-    (function applyRegionalProgramLinks() {
-      var cards = document.querySelectorAll(".program-card[data-href-en][data-href-ko]");
-      if (!cards.length) return;
-      var timeZone = "";
-      try { timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone || ""; } catch (_) {}
-      var languages = [];
-      if (Array.isArray(navigator.languages) && navigator.languages.length) {
-        languages = navigator.languages;
-      } else if (navigator.language) {
-        languages = [navigator.language];
-      }
-      var isKoreanLanguage = languages.some(function (tag) {
-        return String(tag || "").toLowerCase().startsWith("ko");
-      });
-      var isKoreanRegion = languages.some(function (tag) {
-        try { return new Intl.Locale(tag).region === "KR"; } catch (_) { return false; }
-      });
-      var isKoreaTimeZone = /(^|\/)seoul$/i.test(timeZone);
-      var shouldUseKorean = isKoreanLanguage || isKoreanRegion || isKoreaTimeZone;
-      var key = shouldUseKorean ? "hrefKo" : "hrefEn";
-      cards.forEach(function (card) {
-        var target = card.dataset[key];
-        if (target) card.href = target;
-      });
-    })();
-  </script>
 </body>
 </html>
