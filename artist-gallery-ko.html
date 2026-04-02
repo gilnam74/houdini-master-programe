@@ -390,11 +390,11 @@
     <!-- Section nav -->
     <nav class="section-nav" aria-label="갤러리 카테고리">
       <div class="section-nav-inner">
-        <a href="#media-art">Media Art</a>
-        <a href="#film-art">Film Art</a>
-        <a href="#game-art">Game Art</a>
-        <a href="#tech-art">Tech Art</a>
-        <a href="#fine-art">Fine Art</a>
+        <a href="#film-art">영화 아트</a>
+        <a href="#game-art">게임 아트</a>
+        <a href="#tech-art">테크 아트</a>
+        <a href="#media-art">미디어 아트</a>
+        <a href="#fine-art">순수 미술</a>
         <a href="index.html">홈으로</a>
       </div>
     </nav>
@@ -403,22 +403,22 @@
   <main class="page">
     <!-- Hide old topbar via CSS; keep for accessibility fallback -->
     <header class="topbar">
-      <a class="back-link" href="index.html">Back to Home</a>
+      <a class="back-link" href="index.html">홈으로</a>
       <div class="top-actions">
         <div class="lang-switch" aria-label="Language switch">
           <a href="artist-gallery.html">EN</a>
           <a class="active" href="artist-gallery-ko.html">KO</a>
         </div>
-        <span class="tiny-link">Artist Archive / 2026</span>
+        <span class="tiny-link">작가 아카이브 / 2026</span>
       </div>
     </header>
 
-    <section class="hero" aria-label="Artist introduction">
+    <section class="hero" aria-label="작가 소개">
       <div class="hero-copy">
-        <p class="eyebrow">Artist</p>
+        <p class="eyebrow">아티스트</p>
         <div class="hero-title-row">
           <h1>Choi Gil Nam</h1>
-          <a class="linkedin-link" href="https://www.linkedin.com/in/choi-gil-nam-6a441132/" target="_blank" rel="noopener noreferrer" aria-label="Choi Gil Nam LinkedIn profile">
+          <a class="linkedin-link" href="https://www.linkedin.com/in/choi-gil-nam-6a441132/" target="_blank" rel="noopener noreferrer" aria-label="최길남 LinkedIn 프로필">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/250px-LinkedIn_logo_initials.png" alt="LinkedIn" width="250" height="250" loading="lazy" decoding="async" />
           </a>
           <img class="hero-thumb" src="assets/images/gallery/mypictureThumnail.JPG" alt="Choi Gil Nam portrait" width="1280" height="1600" loading="eager" fetchpriority="high" decoding="async" />
@@ -428,42 +428,11 @@
       </div>
     </section>
 
-    <section aria-label="Gallery">
-      <section class="gallery-section" id="media-art" aria-labelledby="media-art-title">
-        <div class="section-head">
-          <div>
-            <h2 id="media-art-title">Media Art</h2>
-          </div>
-        </div>
-        <div class="gallery">
-          <button class="art-card" type="button" data-kind="video" data-embed="https://www.youtube.com/embed/O4JWdi4vjWU?autoplay=1" data-alt="The Rain Show YouTube Shorts thumbnail" data-description="" data-caption="라스베가스에 있는 Miracle Mile shop에서 상영되고 있는 미디어 아트 영상이다. GiantStep US 와 함께 했던 작업이고 Effect Supervisor로서 모든 시각효과를 감독하였다.">
-            <img src="assets/images/gallery/MMS-26136_W1_The_Rain_Show_Web_Thumbnail.jpg" alt="The Rain Show YouTube Shorts thumbnail" width="1280" height="720" loading="lazy" />
-            <span class="card-copy"><strong>Miracle Mile Rain Show at Las Vegas</strong><span>라스베가스에 있는 Miracle Mile shop에서 상영되고 있는 미디어 아트 영상이다. GiantStep US 와 함께 했던 작업이고 Effect Supervisor로서 모든 시각효과를 감독하였다.</span></span>
-          </button>
-
-          <button class="art-card focus-bottom" type="button" data-full="assets/images/gallery/zombieTogeter.jpg" data-alt="Dead or Alive artwork" data-caption="VDB 노이즈와 시뮬레이션 기법을 활용해 프로시저럴 모델링을 구현한 이펙트 기반 스컬프팅 접근 방식입니다.">
-            <img src="assets/images/gallery/zombieTogeter.jpg" alt="Dead or Alive artwork" width="1920" height="1080" loading="lazy" />
-            <span class="card-copy"><strong>Dead or Alive</strong><span>프로시저럴 이펙트 기반 스컬프팅</span></span>
-          </button>
-
-          <button class="art-card" type="button" data-kind="video" data-embed="https://www.youtube.com/embed/MIctPNS4nJE?autoplay=1" data-alt="Mud thumbnail" data-description="" data-caption="동기부여">
-            <img src="https://img.youtube.com/vi/MIctPNS4nJE/maxresdefault.jpg" alt="Mud thumbnail" width="1280" height="720" loading="lazy" />
-            <span class="card-copy"><strong>Mud</strong><span>동기부여</span></span>
-          </button>
-
-
-          <button class="art-card" type="button" data-kind="video" data-embed="https://www.youtube.com/embed/6gvMCo8gROo?autoplay=1" data-alt="Prison thumbnail" data-caption="유리 케이스 안에 전시된 프로시저럴 좀비 조각 작품. Houdini의 VDB 노이즈와 시뮬레이션 기법으로 제작되었습니다.">
-            <img src="https://img.youtube.com/vi/6gvMCo8gROo/maxresdefault.jpg" alt="Prison thumbnail" width="1280" height="720" loading="lazy" />
-            <span class="card-copy"><strong>Prison</strong><span>프로시저럴 이펙트 기반 스컬프팅</span></span>
-          </button>
-
-        </div>
-      </section>
-
+    <section aria-label="갤러리">
       <section class="gallery-section" id="film-art" aria-labelledby="film-art-title">
         <div class="section-head">
           <div>
-            <h2 id="film-art-title">Film Art</h2>
+            <h2 id="film-art-title">영화 아트</h2>
           </div>
         </div>
         <div class="gallery">
@@ -482,12 +451,12 @@
             <span class="card-copy"><strong>Procedural Thinking (SideFX)</strong><span>클릭하면 전체 레슨 링크와 설명을 확인할 수 있습니다.</span></span>
           </button>
 
-          <button class="art-card" type="button" data-full="assets/images/gallery/Gnomon.JPG" data-alt="Create Disintegration VFX in Houdini & Nuke artwork" data-caption="Create Disintegration VFX in Houdini & Nuke / Gnomon School 강의 이미지입니다. 이곳은 제가 CG를 처음 시작했을 때 공부했던 학교이기도 하다. 그래서 이곳에 내 강의가 있다는 것이 뿌듯하다. 원본 페이지: https://www.thegnomonworkshop.com/workshops/create-disintegration-vfx-in-houdini-nuke">
+          <button class="art-card" type="button" data-full="assets/images/gallery/Gnomon.JPG" data-alt="Create Disintegration VFX in Houdini & Nuke artwork" data-caption="Create Disintegration VFX in Houdini & Nuke / Gnomon School 강의 이미지입니다. 이곳은 제가 CG를 처음 시작했을 때 공부했던 학교이기도 합니다. 그래서 이곳에 제 강의가 있다는 것이 뿌듯합니다. 원본 페이지: https://www.thegnomonworkshop.com/workshops/create-disintegration-vfx-in-houdini-nuke">
             <img src="assets/images/gallery/film-art-third-thumbnail.jpg" alt="Film Art third card thumbnail" width="900" height="900" loading="lazy" />
             <span class="card-copy"><strong>Create Disintegration VFX (Gnomon)</strong><span>Gnomon School 강의 이미지 프리뷰입니다.</span></span>
           </button>
 
-          <button class="art-card tall" type="button" data-kind="video" data-embed="https://www.youtube.com/embed/wGYM3dMGZL8?autoplay=1" data-alt="Shaping The Future" data-description="Open Original Resourse" data-description-link="https://www.youtube.com/watch?v=wGYM3dMGZL8" data-caption="현재 산업에서 필요한 지식과 미래에 필요한 지식의 내용을 학생들에게 공유하는 자리였다. 나는 현재 이 학교에서 Head of Media로서 VFX, Animation, Game Development Program을 책임지고 있다.">
+          <button class="art-card tall" type="button" data-kind="video" data-embed="https://www.youtube.com/embed/wGYM3dMGZL8?autoplay=1" data-alt="Shaping The Future" data-description="원본 리소스 열기" data-description-link="https://www.youtube.com/watch?v=wGYM3dMGZL8" data-caption="현재 산업에서 필요한 지식과 미래에 필요한 지식을 학생들과 공유한 세션입니다. 저는 현재 이 학교에서 Head of Media로서 VFX, Animation, Game Development Program을 맡고 있습니다.">
             <img src="assets/images/gallery/shaping-the-future-thumbnail.jpg" alt="Shaping The Future thumbnail" width="501" height="500" loading="lazy" />
             <span class="card-copy"><strong>Shaping The Future</strong><span>Industry Speaker Series</span></span>
           </button>
@@ -497,13 +466,13 @@
       <section class="gallery-section" id="game-art" aria-labelledby="game-art-title">
         <div class="section-head">
           <div>
-            <h2 id="game-art-title">Game Art</h2>
+            <h2 id="game-art-title">게임 아트</h2>
           </div>
         </div>
         <div class="gallery">
-          <button class="art-card" type="button" data-kind="video" data-embed="https://player.vimeo.com/video/784287548?autoplay=1" data-alt="Game art Vimeo reel" data-description="" data-caption="게임개발에서 진행했던 TechArt / FX / Procedural Tool에 대한 작업을 모아두었다.">
+          <button class="art-card" type="button" data-kind="video" data-embed="https://player.vimeo.com/video/784287548?autoplay=1" data-alt="Game art Vimeo reel" data-description="" data-caption="게임개발에서 진행했던 TechArt / FX / Procedural Tool에 대한 작업을 모아두었습니다.">
             <img src="assets/images/gallery/GameArt.JPG" alt="Game art Vimeo reel thumbnail" width="699" height="828" loading="lazy" />
-            <span class="card-copy"><strong>Game Art Reel</strong><span>게임개발에서 진행했던 TechArt / FX / Procedural Tool에 대한 작업을 모아두었다.</span></span>
+            <span class="card-copy"><strong>Game Art Reel</strong><span>게임개발에서 진행했던 TechArt / FX / Procedural Tool에 대한 작업을 모아두었습니다.</span></span>
           </button>
 
           <button class="art-card" type="button" data-full="assets/images/gallery/zombie.jpg" data-alt="Zombie Realtime FX course thumbnail" data-playlist="zombie-realtime-fx" data-caption="SideFX Zombie Realtime FX의 전체 레슨 링크와 요약이 이 상세 보기 안에 정리되어 있습니다.">
@@ -511,12 +480,12 @@
             <span class="card-copy"><strong>Zombie Realtime FX (SideFX)</strong><span>클릭하면 전체 레슨 링크와 설명을 확인할 수 있습니다.</span></span>
           </button>
 
-          <button class="art-card" type="button" data-kind="video" data-embed="https://www.youtube.com/embed/mDEjPY3VptE?autoplay=1" data-alt="Unreal Fest Presentation" data-description="https://youtu.be/mDEjPY3VptE" data-caption="매년 열리는 세계적인 Epic Games 행사이다. 영화속 퀄리티를 게임엔진으로 가져오는 방법에 대한 발표를 진행했었다.">
+          <button class="art-card" type="button" data-kind="video" data-embed="https://www.youtube.com/embed/mDEjPY3VptE?autoplay=1" data-alt="Unreal Fest Presentation" data-description="https://youtu.be/mDEjPY3VptE" data-caption="매년 열리는 세계적인 Epic Games 행사입니다. 영화 속 퀄리티를 게임 엔진으로 가져오는 방법에 대한 발표를 진행했었습니다.">
             <img src="assets/images/gallery/Unreal-Fest-cover.webp" alt="Unreal Fest Presentation thumbnail" width="640" height="360" loading="lazy" />
             <span class="card-copy"><strong>Unreal Fest Presentation</strong><span>Unreal Fest 발표 세션입니다.</span></span>
           </button>
 
-          <button class="art-card" type="button" data-kind="video" data-embed="https://www.youtube.com/embed/CPHRPGJRGzM?autoplay=1" data-alt="Gnomon Presentation" data-description="Open Original Resourse" data-description-link="https://youtu.be/CPHRPGJRGzM" data-caption="LA에 있는 세계적으로 가장 널리 알려진 CG학교에서 온라인 라이브 강연을 하였다.">
+          <button class="art-card" type="button" data-kind="video" data-embed="https://www.youtube.com/embed/CPHRPGJRGzM?autoplay=1" data-alt="Gnomon Presentation" data-description="원본 리소스 열기" data-description-link="https://youtu.be/CPHRPGJRGzM" data-caption="LA에 있는 세계적으로 널리 알려진 CG 학교에서 온라인 라이브 강연을 진행했습니다.">
             <img src="assets/images/gallery/game-art-fourth-thumbnail.png" alt="Gnomon Presentation thumbnail" width="225" height="225" loading="lazy" />
             <span class="card-copy"><strong>Gnomon Presentation</strong><span>LA 주요 CG 학교에서 진행한 온라인 라이브 세션입니다.</span></span>
           </button>
@@ -526,18 +495,47 @@
       <section class="gallery-section" id="tech-art" aria-labelledby="tech-art-title">
         <div class="section-head">
           <div>
-            <h2 id="tech-art-title">Tech Art</h2>
+            <h2 id="tech-art-title">테크 아트</h2>
           </div>
         </div>
         <div class="gallery">
-          <button class="art-card" type="button" data-kind="video" data-embed="https://www.youtube.com/embed/CnhPFIcG5q8?autoplay=1" data-alt="AI Mesh Generator thumbnail" data-description="텍스트 프롬프트와 레퍼런스 이미지를 실제 제작에 사용할 수 있는 3D 메쉬로 바꾸는 Houdini 중심 툴체인이다. 빠른 아이데이션과 활용 가능한 토폴로지, 게임 엔진 및 VFX 파이프라인 연동에 초점을 맞췄다." data-caption="AI 기반 메쉬 생성, 파이프라인 연동, 후속 게임엔진 및 프로시저럴 워크플로 활용을 위한 테크 아트 툴 개발.">
+          <button class="art-card" type="button" data-kind="video" data-embed="https://www.youtube.com/embed/CnhPFIcG5q8?autoplay=1" data-alt="AI Mesh Generator thumbnail" data-description="텍스트 프롬프트와 레퍼런스 이미지를 실제 제작에 사용할 수 있는 3D 메쉬로 바꾸는 Houdini 중심 툴체인입니다. 빠른 아이데이션과 활용 가능한 토폴로지, 게임 엔진 및 VFX 파이프라인 연동에 초점을 맞췄습니다." data-caption="AI 기반 메쉬 생성, 파이프라인 연동, 후속 게임 엔진 및 프로시저럴 워크플로 활용을 위한 테크 아트 툴 개발입니다.">
             <img src="https://img.youtube.com/vi/CnhPFIcG5q8/maxresdefault.jpg" alt="AI Mesh Generator thumbnail" width="1280" height="720" loading="lazy" />
             <span class="card-copy"><strong>AI Mesh Generator</strong><span>프롬프트와 레퍼런스 이미지를 실제 제작용 메쉬로 연결하는 Houdini 기반 툴체인</span></span>
           </button>
 
-          <button class="art-card" type="button" data-kind="viewer" data-kind-label="인터랙티브 뷰어" data-embed="fat3.html" data-alt="Museum - 3D Gaussian Splatting thumbnail" data-description="AI로 생성한 이미지를 탐색 가능한 3D Gaussian Splatting 장면으로 전환하는 파이프라인 실험이다. 이미지 생성, 공간 재구성, 전시 방식까지 하나의 창작 흐름으로 연결한다." data-caption="생성 이미지를 3D Gaussian Splatting으로 재구성해 몰입형 뮤지엄 공간으로 확장한 공간화 실험.">
+          <button class="art-card" type="button" data-kind="viewer" data-kind-label="인터랙티브 뷰어" data-embed="fat3.html" data-alt="Museum - 3D Gaussian Splatting thumbnail" data-description="AI로 생성한 이미지를 탐색 가능한 3D Gaussian Splatting 장면으로 전환하는 파이프라인 실험입니다. 이미지 생성, 공간 재구성, 전시 방식까지 하나의 창작 흐름으로 연결합니다." data-caption="생성 이미지를 3D Gaussian Splatting으로 재구성해 몰입형 뮤지엄 공간으로 확장한 공간화 실험입니다.">
             <img src="assets/images/gallery/frame_000001.jpg" alt="Museum - 3D Gaussian Splatting thumbnail" width="1756" height="1176" loading="lazy" />
             <span class="card-copy"><strong>Museum - 3D Gaussian Splatting</strong><span>생성 이미지를 3D Gaussian Splatting으로 재구성한 탐색형 공간 작업</span></span>
+          </button>
+        </div>
+      </section>
+
+      <section class="gallery-section" id="media-art" aria-labelledby="media-art-title">
+        <div class="section-head">
+          <div>
+            <h2 id="media-art-title">미디어 아트</h2>
+          </div>
+        </div>
+        <div class="gallery">
+          <button class="art-card" type="button" data-kind="video" data-embed="https://www.youtube.com/embed/O4JWdi4vjWU?autoplay=1" data-alt="The Rain Show YouTube Shorts thumbnail" data-description="" data-caption="라스베이거스 Miracle Mile Shops에서 상영된 미디어 아트 영상입니다. Giantstep US와 협업한 작업으로, Effect Supervisor로서 전체 시각효과를 총괄했습니다.">
+            <img src="assets/images/gallery/MMS-26136_W1_The_Rain_Show_Web_Thumbnail.jpg" alt="The Rain Show YouTube Shorts thumbnail" width="1280" height="720" loading="lazy" />
+            <span class="card-copy"><strong>Miracle Mile Rain Show at Las Vegas</strong><span>라스베이거스 Miracle Mile Shops에서 상영된 미디어 아트 영상입니다. Giantstep US와 협업한 작업으로, Effect Supervisor로서 전체 시각효과를 총괄했습니다.</span></span>
+          </button>
+
+          <button class="art-card focus-bottom" type="button" data-full="assets/images/gallery/zombieTogeter.jpg" data-alt="Dead or Alive artwork" data-caption="VDB 노이즈와 시뮬레이션 기법을 활용해 프로시저럴 모델링을 구현한 이펙트 기반 스컬프팅 접근 방식입니다.">
+            <img src="assets/images/gallery/zombieTogeter.jpg" alt="Dead or Alive artwork" width="1920" height="1080" loading="lazy" />
+            <span class="card-copy"><strong>Dead or Alive</strong><span>프로시저럴 이펙트 기반 스컬프팅</span></span>
+          </button>
+
+          <button class="art-card" type="button" data-kind="video" data-embed="https://www.youtube.com/embed/MIctPNS4nJE?autoplay=1" data-alt="Mud thumbnail" data-description="" data-caption="동기부여">
+            <img src="https://img.youtube.com/vi/MIctPNS4nJE/maxresdefault.jpg" alt="Mud thumbnail" width="1280" height="720" loading="lazy" />
+            <span class="card-copy"><strong>Mud</strong><span>동기부여</span></span>
+          </button>
+
+          <button class="art-card" type="button" data-kind="video" data-embed="https://www.youtube.com/embed/6gvMCo8gROo?autoplay=1" data-alt="Prison thumbnail" data-caption="유리 케이스 안에 전시된 프로시저럴 좀비 조각 작품입니다. Houdini의 VDB 노이즈와 시뮬레이션 기법으로 제작되었습니다.">
+            <img src="https://img.youtube.com/vi/6gvMCo8gROo/maxresdefault.jpg" alt="Prison thumbnail" width="1280" height="720" loading="lazy" />
+            <span class="card-copy"><strong>Prison</strong><span>프로시저럴 이펙트 기반 스컬프팅</span></span>
           </button>
         </div>
       </section>
@@ -545,26 +543,26 @@
       <section class="gallery-section" id="fine-art" aria-labelledby="fine-art-title">
         <div class="section-head">
           <div>
-            <h2 id="fine-art-title">Fine Art</h2>
+            <h2 id="fine-art-title">순수 미술</h2>
           </div>
         </div>
         <div class="gallery">
-          <button class="art-card focus-top" type="button" data-full="assets/images/gallery/visualArt_01.jpg" data-alt="Visual art image 01" data-caption="ILM에서 진행했던 Art 전시회에서 1등을 했다.">
+          <button class="art-card focus-top" type="button" data-full="assets/images/gallery/visualArt_01.jpg" data-alt="Visual art image 01" data-caption="ILM에서 진행했던 아트 전시회에서 1등을 했습니다.">
             <img src="assets/images/gallery/visualArt_01.jpg" alt="Visual art image 01" width="1200" height="1200" loading="lazy" />
             <span class="card-copy"><strong>Lady</strong><span>아크릴 물감</span></span>
           </button>
 
-          <button class="art-card" type="button" data-full="assets/images/gallery/visualArt_02.jpg" data-alt="Drawing 02" data-caption="드로잉은 관찰과 직관이 만나는 순간이다. 모든 선은 하나의 결정이며, 그 흔적 안에는 손의 무게가 담겨 있다.">
+          <button class="art-card" type="button" data-full="assets/images/gallery/visualArt_02.jpg" data-alt="Drawing 02" data-caption="드로잉은 관찰과 직관이 만나는 순간입니다. 모든 선은 하나의 결정이며, 그 흔적 안에는 손의 무게가 담겨 있습니다.">
             <img src="assets/images/gallery/visualArt_02.jpg" alt="Drawing 02" width="1200" height="1200" loading="lazy" />
             <span class="card-copy"><strong>Drawing</strong><span>연필 드로잉</span></span>
           </button>
 
-          <button class="art-card" type="button" data-full="assets/images/gallery/visualArt_03.jpg" data-alt="Drawing 03" data-caption="드로잉은 재료의 복잡함을 걷어내고 본질만 남긴다 — 형태, 빛, 그리고 눈과 손 사이의 조용한 대화.">
+          <button class="art-card" type="button" data-full="assets/images/gallery/visualArt_03.jpg" data-alt="Drawing 03" data-caption="드로잉은 재료의 복잡함을 걷어내고 본질만 남깁니다 — 형태, 빛, 그리고 눈과 손 사이의 조용한 대화입니다.">
             <img src="assets/images/gallery/visualArt_03.jpg" alt="Drawing 03" width="1200" height="1200" loading="lazy" />
             <span class="card-copy"><strong>Drawing</strong><span>연필 드로잉</span></span>
           </button>
 
-          <button class="art-card" type="button" data-full="assets/images/gallery/visualArt_04.jpg" data-alt="Drawing 04" data-caption="드로잉에는 다른 매체가 쉽게 담지 못하는 솔직함이 있다. 과정이 보이고, 망설임이 읽히며, 의도가 선명하게 드러난다.">
+          <button class="art-card" type="button" data-full="assets/images/gallery/visualArt_04.jpg" data-alt="Drawing 04" data-caption="드로잉에는 다른 매체가 쉽게 담지 못하는 솔직함이 있습니다. 과정이 보이고, 망설임이 읽히며, 의도가 선명하게 드러납니다.">
             <img src="assets/images/gallery/visualArt_04.jpg" alt="Drawing 04" width="1200" height="1200" loading="lazy" />
             <span class="card-copy"><strong>Drawing</strong><span>연필 드로잉</span></span>
           </button>
@@ -573,13 +571,13 @@
       </section>
     </section>
 
-    <p class="footer-note">Artwork by Choi Gil Nam</p>
+    <p class="footer-note">최길남 작품 아카이브</p>
   </main>
 
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <button class="lightbox-nav lightbox-prev" id="lightbox-prev" type="button" aria-label="이전 이미지">&#8249;</button>
     <button class="lightbox-nav lightbox-next" id="lightbox-next" type="button" aria-label="다음 이미지">&#8250;</button>
-    <button class="lightbox-close" id="lightbox-close" type="button" aria-label="Close image">&times;</button>
+    <button class="lightbox-close" id="lightbox-close" type="button" aria-label="이미지 닫기">&times;</button>
     <figure class="lightbox-inner">
       <div class="lightbox-media-column">
         <div class="lightbox-media" id="lightbox-image-wrap">
@@ -590,23 +588,23 @@
             class="lightbox-frame"
             id="lightbox-video"
             src=""
-            title="Embedded Vimeo video"
+            title="임베디드 비디오"
             allow="autoplay; fullscreen; picture-in-picture"
             allowfullscreen
           ></iframe>
         </div>
       </div>
       <figcaption class="lightbox-panel">
-        <p class="lightbox-panel-label">Artwork Detail</p>
+        <p class="lightbox-panel-label">작품 상세</p>
         <h3 class="lightbox-title" id="lightbox-title"></h3>
         <p class="lightbox-description" id="lightbox-description"></p>
         <div class="lightbox-meta">
           <div class="lightbox-meta-item">
-            <strong>View Type</strong>
+            <strong>보기 유형</strong>
             <span id="lightbox-kind"></span>
           </div>
           <div class="lightbox-meta-item">
-            <strong>Archive Note</strong>
+            <strong>아카이브 노트</strong>
             <span id="lightbox-caption"></span>
           </div>
         </div>
