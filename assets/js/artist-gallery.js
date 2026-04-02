@@ -189,10 +189,10 @@ function renderLightbox(index) {
     : (card.querySelector(".card-copy span")?.textContent?.trim() || card.dataset.caption || "");
 
   currentIndex = index;
-  if (card.dataset.kind === "video" || playlist) {
+  if (card.dataset.kind === "video" || card.dataset.kind === "viewer" || playlist) {
     const embedUrl = playlist ? playlist.defaultEmbed : (card.dataset.embed || "");
     showVideoInLightbox(embedUrl);
-    lightboxKind.textContent = "Video";
+    lightboxKind.textContent = card.dataset.kindLabel || (card.dataset.kind === "viewer" ? "Interactive Viewer" : "Video");
   } else {
     lightboxVideoWrap.classList.add("hidden");
     lightboxImageWrap.classList.remove("hidden");
