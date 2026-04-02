@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Work | DOOBOB</title>
   <meta name="description" content="DOOBOB video portfolio — VFX, Game, Commercial, Tech Art, and Media Art works." />
+  <link rel="preconnect" href="https://player.vimeo.com" />
+  <link rel="preconnect" href="https://i.vimeocdn.com" crossorigin />
+  <link rel="preconnect" href="https://img.youtube.com" />
+  <link rel="preconnect" href="https://vumbnail.com" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -244,6 +248,31 @@
       width: 100%;
       height: 100%;
       border: none;
+      opacity: 0;
+      transition: opacity 220ms ease;
+    }
+    .modal-box.is-media-ready .modal-video-wrap iframe {
+      opacity: 1;
+    }
+    .modal-video-poster {
+      position: absolute;
+      inset: 0;
+      display: block;
+      background-color: #050505;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      transition: opacity 220ms ease, visibility 0s linear 220ms;
+    }
+    .modal-video-poster::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.26));
+    }
+    .modal-box.is-media-ready .modal-video-poster {
+      opacity: 0;
+      visibility: hidden;
     }
     .modal-info-col {
       padding: 36px 28px;
@@ -359,7 +388,7 @@
 
         <div class="video-card" data-category="music-video" data-embed="https://www.youtube.com/embed/lgILl71Ya2E?autoplay=1">
           <div class="video-thumb-wrap">
-            <img class="video-thumb" src="https://img.youtube.com/vi/lgILl71Ya2E/maxresdefault.jpg" alt="Featured YouTube project thumbnail" loading="lazy" onerror="this.src='https://img.youtube.com/vi/lgILl71Ya2E/hqdefault.jpg'" />
+            <img class="video-thumb" src="https://img.youtube.com/vi/lgILl71Ya2E/maxresdefault.jpg" alt="Featured YouTube project thumbnail" loading="lazy" decoding="async" onerror="this.src='https://img.youtube.com/vi/lgILl71Ya2E/hqdefault.jpg'" />
             <div class="play-btn" aria-hidden="true">
               <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="32" cy="32" r="32" fill="rgba(255,255,255,0.18)"/>
@@ -376,7 +405,7 @@
 
         <div class="video-card" data-category="vfx" data-embed="https://player.vimeo.com/video/326981893?autoplay=1">
           <div class="video-thumb-wrap">
-            <img class="video-thumb" src="assets/images/gallery/FilmArt.JPG" alt="Film Art Reel thumbnail" loading="lazy" />
+            <img class="video-thumb" src="assets/images/gallery/FilmArt.JPG" alt="Film Art Reel thumbnail" loading="lazy" decoding="async" />
             <div class="play-btn" aria-hidden="true">
               <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="32" cy="32" r="32" fill="rgba(255,255,255,0.18)"/>
@@ -410,7 +439,7 @@
 
         <div class="video-card" data-category="game" data-embed="https://player.vimeo.com/video/784287548?autoplay=1">
           <div class="video-thumb-wrap">
-            <img class="video-thumb" src="assets/images/gallery/GameArt.JPG" alt="Game Demo Reel thumbnail" loading="lazy" />
+            <img class="video-thumb" src="assets/images/gallery/GameArt.JPG" alt="Game Demo Reel thumbnail" loading="lazy" decoding="async" />
             <div class="play-btn" aria-hidden="true">
               <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="32" cy="32" r="32" fill="rgba(255,255,255,0.18)"/>
@@ -427,7 +456,7 @@
 
         <div class="video-card" data-category="commercial" data-embed="https://www.youtube.com/embed/N9d1-qtOWmw?autoplay=1">
           <div class="video-thumb-wrap">
-            <img class="video-thumb" src="https://img.youtube.com/vi/N9d1-qtOWmw/maxresdefault.jpg" alt="AI-Driven City Visualization thumbnail" loading="lazy" />
+            <img class="video-thumb" src="https://img.youtube.com/vi/N9d1-qtOWmw/maxresdefault.jpg" alt="AI-Driven City Visualization thumbnail" loading="lazy" decoding="async" />
             <div class="play-btn" aria-hidden="true">
               <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="32" cy="32" r="32" fill="rgba(255,255,255,0.18)"/>
@@ -444,7 +473,7 @@
 
         <div class="video-card" data-category="commercial" data-embed="https://player.vimeo.com/video/1166855862?autoplay=1">
           <div class="video-thumb-wrap">
-            <img class="video-thumb" src="https://vumbnail.com/1166855862.jpg" alt="Commercial reel thumbnail" loading="lazy" onerror="this.src='assets/images/matrix_city.jpeg'" />
+            <img class="video-thumb" src="https://vumbnail.com/1166855862.jpg" alt="Commercial reel thumbnail" loading="lazy" decoding="async" onerror="this.src='assets/images/matrix_city.jpeg'" />
             <div class="play-btn" aria-hidden="true">
               <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="32" cy="32" r="32" fill="rgba(255,255,255,0.18)"/>
@@ -461,7 +490,7 @@
 
         <div class="video-card" data-category="tech-art" data-embed="https://www.youtube.com/embed/CnhPFIcG5q8?autoplay=1">
           <div class="video-thumb-wrap">
-            <img class="video-thumb" src="https://img.youtube.com/vi/CnhPFIcG5q8/maxresdefault.jpg" alt="Houdini Tech Art thumbnail" loading="lazy" onerror="this.src='assets/images/portfolio_image.jpg'" />
+            <img class="video-thumb" src="https://img.youtube.com/vi/CnhPFIcG5q8/maxresdefault.jpg" alt="Houdini Tech Art thumbnail" loading="lazy" decoding="async" onerror="this.src='assets/images/portfolio_image.jpg'" />
             <div class="play-btn" aria-hidden="true">
               <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="32" cy="32" r="32" fill="rgba(255,255,255,0.18)"/>
@@ -508,6 +537,7 @@
       <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
       <div class="modal-video-col">
         <div class="modal-video-wrap">
+          <div class="modal-video-poster" id="modal-video-poster" aria-hidden="true"></div>
           <iframe id="modal-iframe" src="" allow="autoplay; fullscreen" allowfullscreen title="Work video"></iframe>
         </div>
       </div>
@@ -543,6 +573,7 @@
     const modal    = document.getElementById('modal');
     const modalBox = document.getElementById('modal-box');
     const iframe   = document.getElementById('modal-iframe');
+    const modalPoster = document.getElementById('modal-video-poster');
     const closeBtn = document.getElementById('modal-close');
 
     const modalTag   = document.getElementById('modal-tag');
@@ -553,6 +584,9 @@
       card.addEventListener('click', () => {
         const embedUrl = card.dataset.embed;
         if (!embedUrl) return;
+        const thumbSrc = card.querySelector('.video-thumb')?.currentSrc || card.querySelector('.video-thumb')?.src || '';
+        modalBox.classList.remove('is-media-ready');
+        modalPoster.style.backgroundImage = thumbSrc ? `url("${thumbSrc}")` : 'none';
         iframe.src = embedUrl;
         const isViewerMode = card.dataset.modalMode === 'viewer';
         modalBox.classList.toggle('viewer-mode', isViewerMode);
@@ -564,10 +598,16 @@
       });
     });
 
+    iframe.addEventListener('load', () => {
+      modalBox.classList.add('is-media-ready');
+    });
+
     function closeModal() {
       modal.classList.remove('open');
       modalBox.classList.remove('viewer-mode');
+      modalBox.classList.remove('is-media-ready');
       iframe.src = '';
+      modalPoster.style.backgroundImage = 'none';
       document.body.style.overflow = '';
     }
 

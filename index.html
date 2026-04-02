@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DOOBOB</title>
   <meta name="description" content="DOOBOB — Visual Effect | Game | Commercial | Tech Art | Media Art" />
+  <link rel="preconnect" href="https://player.vimeo.com" />
+  <link rel="preconnect" href="https://i.vimeocdn.com" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
@@ -228,6 +230,28 @@
       width: 100%;
       height: 100%;
       border: none;
+      opacity: 0;
+      transition: opacity 260ms ease;
+    }
+
+    .hero-video-player.is-ready iframe {
+      opacity: 1;
+    }
+
+    .hero-video-poster {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transform: scale(1.01);
+      transition: opacity 260ms ease, visibility 0s linear 260ms;
+    }
+
+    .hero-video-player.is-ready .hero-video-poster {
+      opacity: 0;
+      visibility: hidden;
     }
 
 
@@ -300,7 +324,16 @@
         <p>DOOBOB bridges cutting-edge AI technology with world-class visual storytelling, delivering film VFX, game art, commercial production, and media art experiences.</p>
       </div>
       <div class="hero-video-player">
+        <img
+          class="hero-video-poster"
+          src="assets/images/gallery/FilmArt.JPG"
+          alt="DOOBOB reel poster"
+          width="60093"
+          height="33795"
+          fetchpriority="high"
+          decoding="async" />
         <iframe
+          id="hero-vimeo"
           src="https://player.vimeo.com/video/326981893?autoplay=1&loop=1&muted=1&background=1"
           allow="autoplay; fullscreen"
           allowfullscreen
@@ -315,6 +348,17 @@
   <footer class="site-footer">
     © 2026 DOOBOB. All rights reserved.
   </footer>
+
+  <script>
+    const heroVimeo = document.getElementById('hero-vimeo');
+    const heroVideoPlayer = heroVimeo?.closest('.hero-video-player');
+
+    if (heroVimeo && heroVideoPlayer) {
+      heroVimeo.addEventListener('load', () => {
+        heroVideoPlayer.classList.add('is-ready');
+      }, { once: true });
+    }
+  </script>
 
 </body>
 </html>
