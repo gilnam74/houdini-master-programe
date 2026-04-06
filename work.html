@@ -635,7 +635,51 @@
   <script>
     // ── Filter ──────────────────────────────────────────────────
     const filterBtns = document.querySelectorAll('.filter-btn');
+    const workGrid = document.getElementById('work-grid');
     const cards = document.querySelectorAll('.video-card');
+
+    function getVancouverDateKey() {
+      const parts = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'America/Vancouver',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      }).formatToParts(new Date());
+
+      const map = Object.fromEntries(parts.map(part => [part.type, part.value]));
+      return `${map.year}-${map.month}-${map.day}`;
+    }
+
+    function hashString(value) {
+      let hash = 2166136261;
+      for (let i = 0; i < value.length; i += 1) {
+        hash ^= value.charCodeAt(i);
+        hash = Math.imul(hash, 16777619);
+      }
+      return hash >>> 0;
+    }
+
+    function createSeededRandom(seed) {
+      let state = seed || 1;
+      return () => {
+        state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
+        return state / 4294967296;
+      };
+    }
+
+    function shuffleCardsByVancouverDay() {
+      const cardList = Array.from(cards);
+      const random = createSeededRandom(hashString(getVancouverDateKey()));
+
+      for (let i = cardList.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(random() * (i + 1));
+        [cardList[i], cardList[j]] = [cardList[j], cardList[i]];
+      }
+
+      cardList.forEach(card => workGrid.appendChild(card));
+    }
+
+    shuffleCardsByVancouverDay();
 
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
