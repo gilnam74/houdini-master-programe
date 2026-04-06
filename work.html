@@ -306,6 +306,20 @@
       font-size: 1rem;
       color: var(--apple-sub);
       line-height: 1.75;
+      white-space: pre-line;
+    }
+    .modal-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #000;
+      opacity: 0;
+      transition: opacity 220ms ease;
+    }
+    .modal-box.is-media-ready .modal-image {
+      opacity: 1;
     }
     .modal-close {
       position: absolute;
@@ -522,6 +536,74 @@
           </div>
         </div>
 
+        <div class="video-card" data-category="media-art" data-embed="https://www.youtube.com/embed/O4JWdi4vjWU?autoplay=1" data-description="Client: Miracle Mile Shops Las Vegas, GiantStep US.&#10;&#10;Media art film created for the Miracle Mile rain show in Las Vegas. As Effect Supervisor, I led the visual effects direction and delivery for the large-format screen content.">
+          <div class="video-thumb-wrap">
+            <img class="video-thumb" src="assets/images/gallery/MMS-26136_W1_The_Rain_Show_Web_Thumbnail.jpg" alt="Miracle Mile Rain Show at Las Vegas thumbnail" loading="lazy" decoding="async" width="1280" height="720" />
+            <div class="play-btn" aria-hidden="true">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="32" fill="rgba(255,255,255,0.18)"/>
+                <polygon points="26,20 48,32 26,44" fill="white"/>
+              </svg>
+            </div>
+          </div>
+          <div class="video-card-body">
+            <span class="video-tag">Media Art</span>
+            <h3>Miracle Mile Rain Show at Las Vegas</h3>
+            <p>Client: Miracle Mile Shops Las Vegas, GiantStep US. Media art film created for the Miracle Mile rain show in Las Vegas, with visual effects supervision and final content delivery.</p>
+          </div>
+        </div>
+
+        <div class="video-card" data-category="media-art" data-image="assets/images/gallery/zombieTogeter.jpg" data-description="Procedural effect-driven sculpting study built with VDB noise and simulation-based modeling techniques.">
+          <div class="video-thumb-wrap">
+            <img class="video-thumb" src="assets/images/gallery/zombieTogeter.jpg" alt="Dead or Alive artwork" loading="lazy" decoding="async" width="1920" height="1080" />
+            <div class="play-btn" aria-hidden="true">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="32" fill="rgba(255,255,255,0.18)"/>
+                <polygon points="26,20 48,32 26,44" fill="white"/>
+              </svg>
+            </div>
+          </div>
+          <div class="video-card-body">
+            <span class="video-tag">Media Art</span>
+            <h3>Dead or Alive</h3>
+            <p>Procedural effect-driven sculpting developed through VDB noise and simulation-based modeling in Houdini.</p>
+          </div>
+        </div>
+
+        <div class="video-card" data-category="media-art" data-embed="https://www.youtube.com/embed/MIctPNS4nJE?autoplay=1">
+          <div class="video-thumb-wrap">
+            <img class="video-thumb" src="https://img.youtube.com/vi/MIctPNS4nJE/maxresdefault.jpg" alt="Mud thumbnail" loading="lazy" decoding="async" onerror="this.src='https://img.youtube.com/vi/MIctPNS4nJE/hqdefault.jpg'" />
+            <div class="play-btn" aria-hidden="true">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="32" fill="rgba(255,255,255,0.18)"/>
+                <polygon points="26,20 48,32 26,44" fill="white"/>
+              </svg>
+            </div>
+          </div>
+          <div class="video-card-body">
+            <span class="video-tag">Media Art</span>
+            <h3>Mud</h3>
+            <p>A short media art study focused on atmosphere, texture, and the emotional pull of dense organic motion.</p>
+          </div>
+        </div>
+
+        <div class="video-card" data-category="media-art" data-embed="https://www.youtube.com/embed/6gvMCo8gROo?autoplay=1">
+          <div class="video-thumb-wrap">
+            <img class="video-thumb" src="https://img.youtube.com/vi/6gvMCo8gROo/maxresdefault.jpg" alt="Prison thumbnail" loading="lazy" decoding="async" onerror="this.src='https://img.youtube.com/vi/6gvMCo8gROo/hqdefault.jpg'" />
+            <div class="play-btn" aria-hidden="true">
+              <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="32" fill="rgba(255,255,255,0.18)"/>
+                <polygon points="26,20 48,32 26,44" fill="white"/>
+              </svg>
+            </div>
+          </div>
+          <div class="video-card-body">
+            <span class="video-tag">Media Art</span>
+            <h3>Prison</h3>
+            <p>A procedurally sculpted zombie figure presented as a contained installation study, built with VDB noise and simulation workflows.</p>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -538,6 +620,7 @@
       <div class="modal-video-col">
         <div class="modal-video-wrap">
           <div class="modal-video-poster" id="modal-video-poster" aria-hidden="true"></div>
+          <img class="modal-image" id="modal-image" alt="" />
           <iframe id="modal-iframe" src="" allow="autoplay; fullscreen" allowfullscreen title="Work video"></iframe>
         </div>
       </div>
@@ -573,6 +656,7 @@
     const modal    = document.getElementById('modal');
     const modalBox = document.getElementById('modal-box');
     const iframe   = document.getElementById('modal-iframe');
+    const modalImage = document.getElementById('modal-image');
     const modalPoster = document.getElementById('modal-video-poster');
     const closeBtn = document.getElementById('modal-close');
 
@@ -583,16 +667,34 @@
     cards.forEach(card => {
       card.addEventListener('click', () => {
         const embedUrl = card.dataset.embed;
-        if (!embedUrl) return;
+        const imageUrl = card.dataset.image;
+        if (!embedUrl && !imageUrl) return;
         const thumbSrc = card.querySelector('.video-thumb')?.currentSrc || card.querySelector('.video-thumb')?.src || '';
         modalBox.classList.remove('is-media-ready');
         modalPoster.style.backgroundImage = thumbSrc ? `url("${thumbSrc}")` : 'none';
-        iframe.src = embedUrl;
         const isViewerMode = card.dataset.modalMode === 'viewer';
         modalBox.classList.toggle('viewer-mode', isViewerMode);
         modalTag.textContent   = card.querySelector('.video-tag')?.textContent || '';
         modalTitle.textContent = card.querySelector('h3')?.textContent || '';
-        modalDesc.textContent  = card.querySelector('p')?.textContent || '';
+        modalDesc.textContent  = card.dataset.description || card.querySelector('p')?.textContent || '';
+
+        if (imageUrl) {
+          iframe.src = '';
+          iframe.style.display = 'none';
+          modalPoster.style.display = 'none';
+          modalImage.style.display = 'block';
+          modalImage.src = imageUrl;
+          modalImage.alt = modalTitle.textContent;
+          requestAnimationFrame(() => modalBox.classList.add('is-media-ready'));
+        } else {
+          modalImage.src = '';
+          modalImage.alt = '';
+          modalImage.style.display = 'none';
+          iframe.style.display = '';
+          modalPoster.style.display = '';
+          iframe.src = embedUrl;
+        }
+
         modal.classList.add('open');
         document.body.style.overflow = 'hidden';
       });
@@ -607,6 +709,11 @@
       modalBox.classList.remove('viewer-mode');
       modalBox.classList.remove('is-media-ready');
       iframe.src = '';
+      iframe.style.display = '';
+      modalImage.src = '';
+      modalImage.alt = '';
+      modalImage.style.display = 'none';
+      modalPoster.style.display = '';
       modalPoster.style.backgroundImage = 'none';
       document.body.style.overflow = '';
     }
