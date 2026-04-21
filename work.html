@@ -69,53 +69,47 @@
     }
 
     /* ─── Filter Bar ─────────────────────────────────────────── */
-    .filter-bar {
-      background: var(--apple-white);
-      padding: 0 0 36px;
-    }
-    .filter-bar-inner {
-      width: min(var(--apple-max), 94vw);
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .filter-btn {
-      display: inline-block;
-      padding: 8px 20px;
-      border-radius: 999px;
-      border: 1.5px solid var(--apple-border);
-      background: transparent;
-      color: var(--apple-sub);
-      font: inherit;
-      font-size: 0.82rem;
-      font-weight: 500;
-      letter-spacing: 0.03em;
-      cursor: pointer;
-      transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
-    }
-    .filter-btn:hover {
-      border-color: var(--apple-text);
-      color: var(--apple-text);
-    }
-    .filter-btn.active {
-      background: var(--apple-text);
-      color: #fff;
-      border-color: var(--apple-text);
-    }
-
-    /* ─── Work Grid ──────────────────────────────────────────── */
     .work-section {
       background: var(--apple-light);
-      padding: 0 0 80px;
+      padding: 12px 0 88px;
       flex: 1;
     }
+    /* ─── Work Grid ──────────────────────────────────────────── */
     .work-inner {
       width: min(var(--apple-max), 94vw);
       margin: 0 auto;
-      padding-top: 48px;
+    }
+    .portfolio-stack {
+      display: grid;
+      gap: 32px;
+    }
+    .work-category {
+      background: var(--apple-white);
+      border: 1px solid var(--apple-border);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: 0 18px 48px rgba(0,0,0,0.05);
+    }
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(29,29,31,0.08);
+    }
+    .section-head h2 {
+      font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--apple-text);
+    }
+    .section-head p {
+      max-width: 620px;
+      font-size: 0.92rem;
+      color: var(--apple-sub);
+      line-height: 1.65;
     }
     .work-grid {
       display: grid;
@@ -166,7 +160,12 @@
       height: 56px;
       filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
     }
-    .video-card-body { padding: 20px 22px 22px; }
+    .video-card-body {
+      padding: 20px 22px 22px;
+      display: flex;
+      flex-direction: column;
+      min-height: 170px;
+    }
     .video-tag {
       display: inline-block;
       font-size: 0.7rem;
@@ -189,9 +188,6 @@
       color: var(--apple-sub);
       line-height: 1.55;
     }
-
-    /* hidden when filtered out */
-    .video-card[hidden] { display: none; }
 
     /* ─── Modal ──────────────────────────────────────────────── */
     .modal-backdrop {
@@ -359,8 +355,14 @@
     }
 
     /* ─── Responsive ─────────────────────────────────────────── */
-    @media (max-width: 1000px) { .work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 1000px) {
+      .work-category { padding: 24px; }
+      .work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
     @media (max-width: 600px) {
+      .work-section { padding-bottom: 72px; }
+      .work-category { padding: 20px; border-radius: 22px; }
+      .section-head { margin-bottom: 18px; }
       .work-grid { grid-template-columns: 1fr; }
       .page-hero { padding: 48px 0 36px; }
     }
@@ -380,23 +382,11 @@
   </section>
 
   <!-- ─── Filter ────────────────────────────────────────────────── -->
-  <div class="filter-bar">
-    <div class="filter-bar-inner">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="vfx">VFX</button>
-      <button class="filter-btn" data-filter="animation">Animation</button>
-      <button class="filter-btn" data-filter="game">Game</button>
-      <button class="filter-btn" data-filter="music-video">Music Video</button>
-      <button class="filter-btn" data-filter="commercial">Commercial</button>
-      <button class="filter-btn" data-filter="tech-art">Tech Art</button>
-      <button class="filter-btn" data-filter="media-art">Media Art</button>
-    </div>
-  </div>
-
   <!-- ─── Work Grid ─────────────────────────────────────────────── -->
   <section class="work-section" aria-label="Work portfolio">
     <div class="work-inner">
-      <div class="work-grid" id="work-grid">
+      <div class="portfolio-stack" id="portfolio-sections"></div>
+      <div class="work-grid" id="work-grid" hidden>
 
         <!-- data-embed: full Vimeo/YouTube embed URL  |  data-video-id: YouTube ID shorthand -->
 
@@ -668,67 +658,74 @@
 
   <script>
     // ── Filter ──────────────────────────────────────────────────
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const workGrid = document.getElementById('work-grid');
-    const cards = document.querySelectorAll('.video-card');
-
-    function getVancouverDateKey() {
-      const parts = new Intl.DateTimeFormat('en-US', {
-        timeZone: 'America/Vancouver',
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit'
-      }).formatToParts(new Date());
-
-      const map = Object.fromEntries(parts.map(part => [part.type, part.value]));
-      return `${map.year}-${map.month}-${map.day}`;
-    }
-
-    function hashString(value) {
-      let hash = 2166136261;
-      for (let i = 0; i < value.length; i += 1) {
-        hash ^= value.charCodeAt(i);
-        hash = Math.imul(hash, 16777619);
+    const portfolioSections = document.getElementById('portfolio-sections');
+    const cards = Array.from(document.querySelectorAll('.video-card'));
+    const sectionConfig = [
+      {
+        id: 'film-art',
+        title: 'Film Art',
+        description: 'Film reel, animation, and music video work grouped together as one narrative-driven section.',
+        categories: ['music-video', 'vfx', 'animation']
+      },
+      {
+        id: 'game-art',
+        title: 'Game Art',
+        description: 'Realtime-focused demo reel work for game production and interactive pipelines.',
+        categories: ['game']
+      },
+      {
+        id: 'commercial',
+        title: 'Commercial',
+        description: 'Client-driven commercial projects produced with AI-assisted visuals and procedural workflows.',
+        categories: ['commercial']
+      },
+      {
+        id: 'tech-art',
+        title: 'Tech Art',
+        description: 'Pipeline tools and interactive viewer experiments built around Houdini, AI, and 3D reconstruction.',
+        categories: ['tech-art']
+      },
+      {
+        id: 'media-art',
+        title: 'Media Art',
+        description: 'Large-format installation pieces and sculptural media studies presented as a dedicated section.',
+        categories: ['media-art']
       }
-      return hash >>> 0;
-    }
+    ];
 
-    function createSeededRandom(seed) {
-      let state = seed || 1;
-      return () => {
-        state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
-        return state / 4294967296;
-      };
-    }
+    function createWorkSections() {
+      const fragment = document.createDocumentFragment();
 
-    function shuffleCardsByVancouverDay() {
-      const cardList = Array.from(cards);
-      const random = createSeededRandom(hashString(getVancouverDateKey()));
+      sectionConfig.forEach(section => {
+        const sectionCards = cards.filter(card => section.categories.includes(card.dataset.category));
+        if (!sectionCards.length) return;
 
-      for (let i = cardList.length - 1; i > 0; i -= 1) {
-        const j = Math.floor(random() * (i + 1));
-        [cardList[i], cardList[j]] = [cardList[j], cardList[i]];
-      }
+        const wrapper = document.createElement('section');
+        wrapper.className = 'work-category';
+        wrapper.id = section.id;
+        wrapper.setAttribute('aria-labelledby', `${section.id}-title`);
 
-      cardList.forEach(card => workGrid.appendChild(card));
-    }
+        wrapper.innerHTML = `
+          <div class="section-head">
+            <div>
+              <h2 id="${section.id}-title">${section.title}</h2>
+              <p>${section.description}</p>
+            </div>
+          </div>
+        `;
 
-    shuffleCardsByVancouverDay();
+        const grid = document.createElement('div');
+        grid.className = 'work-grid';
+        sectionCards.forEach(card => grid.appendChild(card));
 
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const f = btn.dataset.filter;
-        cards.forEach(card => {
-          if (f === 'all' || card.dataset.category === f) {
-            card.removeAttribute('hidden');
-          } else {
-            card.setAttribute('hidden', '');
-          }
-        });
+        wrapper.appendChild(grid);
+        fragment.appendChild(wrapper);
       });
-    });
+
+      portfolioSections.appendChild(fragment);
+    }
+
+    createWorkSections();
 
     // ── Modal ───────────────────────────────────────────────────
     const modal    = document.getElementById('modal');
